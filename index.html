@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -850,7 +849,187 @@
             border-radius: 50%;
         }
         
-        /* Message Slides */
+        /* SLIDE 3: Happy New Year Saachiiiii */
+        .happy-new-year-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .firework-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px currentColor;
+        }
+        
+        .celebration-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .happy-text {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, 
+                #FFD700 0%, 
+                #FFA500 25%,
+                #FF69B4 50%,
+                #87CEEB 75%,
+                #E0F7FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 400% 400%;
+            animation: rainbowGradient 5s ease infinite;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: scale(0.5) translateY(-50px);
+            animation: happyTextReveal 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards,
+                       rainbowGradient 5s ease 2s infinite;
+            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+        }
+        
+        @keyframes happyTextReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-50px) rotate(-10deg);
+            }
+            70% {
+                transform: scale(1.1) translateY(0) rotate(2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
+            }
+        }
+        
+        @keyframes rainbowGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .name-text {
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-family: 'Great Vibes', cursive;
+            background: linear-gradient(135deg, 
+                #FF69B4 0%, 
+                #FFB6C1 25%,
+                #FFC0CB 50%,
+                #FFD700 75%,
+                #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 400% 400%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: scale(0) rotate(20deg);
+            animation: nameTextExplode 2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.8s forwards,
+                       rainbowGradient 5s ease 3.8s infinite,
+                       nameFloat 3s ease-in-out 3.8s infinite;
+            filter: drop-shadow(0 0 60px rgba(255, 105, 180, 0.8))
+                    drop-shadow(0 0 100px rgba(255, 215, 0, 0.5));
+            letter-spacing: 0.05em;
+        }
+        
+        @keyframes nameTextExplode {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(20deg);
+                filter: blur(20px) brightness(3) 
+                        drop-shadow(0 0 100px rgba(255, 105, 180, 1))
+                        drop-shadow(0 0 150px rgba(255, 215, 0, 1));
+            }
+            50% {
+                filter: blur(5px) brightness(2)
+                        drop-shadow(0 0 80px rgba(255, 105, 180, 1))
+                        drop-shadow(0 0 120px rgba(255, 215, 0, 0.8));
+            }
+            70% {
+                transform: scale(1.2) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                filter: blur(0) brightness(1)
+                        drop-shadow(0 0 60px rgba(255, 105, 180, 0.8))
+                        drop-shadow(0 0 100px rgba(255, 215, 0, 0.5));
+            }
+        }
+        
+        @keyframes nameFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.03);
+            }
+        }
+        
+        .celebration-emoji {
+            font-size: clamp(2rem, 6vw, 4rem);
+            opacity: 0;
+            animation: emojiPop 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 3.5s forwards,
+                       emojiDance 2s ease-in-out 5s infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+        }
+        
+        @keyframes emojiPop {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(-180deg);
+            }
+            70% {
+                transform: scale(1.3) rotate(20deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        @keyframes emojiDance {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-15px) rotate(-10deg) scale(1.1);
+            }
+            50% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            75% {
+                transform: translateY(-15px) rotate(10deg) scale(1.1);
+            }
+        }
+        
+        /* Confetti particles */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            opacity: 0;
+        }
+        
+        /* SLIDE 4: Message 1 */
         .message-slide .slide-number {
             font-size: 0.85rem;
             letter-spacing: 0.45em;
@@ -1044,12 +1223,12 @@
         }
         
         /* FINALE SLIDE */
-        #slide8 .finale-container {
+        #slide9 .finale-container {
             position: relative;
         }
         
-        #slide8 .finale-container::before,
-        #slide8 .finale-container::after {
+        #slide9 .finale-container::before,
+        #slide9 .finale-container::after {
             content: '✨';
             position: absolute;
             font-size: 2rem;
@@ -1057,13 +1236,13 @@
             animation: floatingLight 5s ease-in-out infinite;
         }
         
-        #slide8 .finale-container::before {
+        #slide9 .finale-container::before {
             top: 10%;
             left: 5%;
             animation-delay: 0s;
         }
         
-        #slide8 .finale-container::after {
+        #slide9 .finale-container::after {
             bottom: 10%;
             right: 5%;
             animation-delay: 2.5s;
@@ -1080,7 +1259,7 @@
             }
         }
         
-        #slide8 .finale-title {
+        #slide9 .finale-title {
             font-size: clamp(4.5rem, 11vw, 9rem);
             font-family: 'Playfair Display', serif;
             font-weight: 700;
@@ -1106,7 +1285,7 @@
             hyphens: auto;
         }
         
-        #slide8 .finale-title::before {
+        #slide9 .finale-title::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -1141,7 +1320,7 @@
             }
         }
         
-        #slide8 .finale-text {
+        #slide9 .finale-text {
             font-size: clamp(1.3rem, 3vw, 1.9rem);
             line-height: 2.5;
             color: rgba(255, 255, 255, 0.85);
@@ -1152,13 +1331,13 @@
         }
         
         @media (max-width: 768px) {
-            #slide8 .finale-text {
+            #slide9 .finale-text {
                 max-width: 100%;
                 padding: 0 10px;
             }
         }
         
-        #slide8 .ornamental-divider {
+        #slide9 .ornamental-divider {
             margin: 70px 0;
             display: flex;
             align-items: center;
@@ -1167,8 +1346,8 @@
             position: relative;
         }
         
-        #slide8 .ornamental-divider::before,
-        #slide8 .ornamental-divider::after {
+        #slide9 .ornamental-divider::before,
+        #slide9 .ornamental-divider::after {
             content: '';
             flex: 1;
             height: 1px;
@@ -1188,28 +1367,28 @@
             }
         }
         
-        #slide8 .ornamental-icon {
+        #slide9 .ornamental-icon {
             font-size: 2.5rem;
             color: #87CEEB;
             animation: sparkleSnow 5s linear infinite;
             position: relative;
         }
         
-        #slide8 .ornamental-icon::before,
-        #slide8 .ornamental-icon::after {
+        #slide9 .ornamental-icon::before,
+        #slide9 .ornamental-icon::after {
             content: '✨';
             position: absolute;
             font-size: 1rem;
             opacity: 0;
         }
         
-        #slide8 .ornamental-icon::before {
+        #slide9 .ornamental-icon::before {
             top: -15px;
             left: -20px;
             animation: miniSparkle1 3s ease-in-out infinite;
         }
         
-        #slide8 .ornamental-icon::after {
+        #slide9 .ornamental-icon::after {
             bottom: -15px;
             right: -20px;
             animation: miniSparkle2 3s ease-in-out 1.5s infinite;
@@ -1242,7 +1421,7 @@
             50% { transform: rotate(180deg) scale(1.2); }
         }
         
-        #slide8 .signature {
+        #slide9 .signature {
             font-size: clamp(2rem, 4vw, 2.8rem);
             font-family: 'Great Vibes', cursive;
             color: rgba(173, 216, 230, 0.9);
@@ -1252,7 +1431,7 @@
             animation: signatureGlow 4s ease-in-out infinite;
         }
         
-        #slide8 .signature::before {
+        #slide9 .signature::before {
             content: '—';
             margin-right: 20px;
             color: rgba(173, 216, 230, 0.6);
@@ -1570,7 +1749,7 @@
             .message-slide .message-title {
                 margin-bottom: 35px;
             }
-            #slide8 .finale-text {
+            #slide9 .finale-text {
                 margin-bottom: 25px;
             }
         }
@@ -1687,29 +1866,29 @@
             }
             
             /* Finale Slide Adjustments */
-            #slide8 .finale-title {
+            #slide9 .finale-title {
                 font-size: clamp(2rem, 9vw, 4rem) !important;
                 margin-bottom: 30px;
                 line-height: 1.25;
             }
             
-            #slide8 .finale-text {
+            #slide9 .finale-text {
                 font-size: clamp(0.9rem, 3vw, 1.2rem) !important;
                 line-height: 2;
                 margin-bottom: 20px;
                 padding: 0 5px !important;
             }
             
-            #slide8 .ornamental-divider {
+            #slide9 .ornamental-divider {
                 margin: 30px 0;
                 gap: 15px;
             }
             
-            #slide8 .ornamental-icon {
+            #slide9 .ornamental-icon {
                 font-size: 1.8rem;
             }
             
-            #slide8 .signature {
+            #slide9 .signature {
                 font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
                 margin-top: 40px;
             }
@@ -1871,26 +2050,26 @@
             }
             
             /* Finale very small screens */
-            #slide8 .finale-title {
+            #slide9 .finale-title {
                 font-size: clamp(1.8rem, 10vw, 3.5rem) !important;
                 margin-bottom: 25px;
             }
             
-            #slide8 .finale-text {
+            #slide9 .finale-text {
                 font-size: clamp(0.85rem, 3.5vw, 1.1rem) !important;
                 line-height: 1.9;
             }
             
-            #slide8 .ornamental-divider {
+            #slide9 .ornamental-divider {
                 margin: 25px 0;
                 gap: 12px;
             }
             
-            #slide8 .ornamental-icon {
+            #slide9 .ornamental-icon {
                 font-size: 1.5rem;
             }
             
-            #slide8 .signature {
+            #slide9 .signature {
                 font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
                 margin-top: 30px;
             }
@@ -1973,7 +2152,7 @@
                 font-size: clamp(0.8rem, 4vw, 0.95rem) !important;
             }
             
-            #slide8 .finale-text {
+            #slide9 .finale-text {
                 font-size: clamp(0.8rem, 4vw, 1rem) !important;
             }
             
@@ -2044,22 +2223,22 @@
                 font-size: clamp(2.5rem, 11vh, 5rem) !important;
             }
             
-            #slide8 .finale-title {
+            #slide9 .finale-title {
                 font-size: clamp(2rem, 9vh, 4.5rem) !important;
                 margin-bottom: 25px;
             }
             
-            #slide8 .finale-text {
+            #slide9 .finale-text {
                 font-size: clamp(0.85rem, 2.8vh, 1.2rem) !important;
                 line-height: 1.8;
                 margin-bottom: 15px;
             }
             
-            #slide8 .ornamental-divider {
+            #slide9 .ornamental-divider {
                 margin: 20px 0;
             }
             
-            #slide8 .signature {
+            #slide9 .signature {
                 margin-top: 25px;
             }
             
@@ -2156,8 +2335,26 @@
             </div>
         </div>
         
-        <!-- SLIDE 3: Message 1 -->
-        <div class="slide message-slide locked" id="slide3">
+        <!-- SLIDE 3: Happy New Year Saachiiiii -->
+        <div class="slide locked" id="slide3">
+            <div class="slide-content">
+                <div class="happy-new-year-container">
+                    <div class="firework-container" id="fireworkContainer"></div>
+                    <div class="celebration-text">
+                        <div class="happy-text">Happy New Year</div>
+                        <div class="name-text">Saachiiiii</div>
+                        <div class="celebration-emoji">🎊🎉✨</div>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The celebration awaits...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 4: Message 1 -->
+        <div class="slide message-slide locked" id="slide4">
             <div class="slide-content">
                 <div class="glass-card">
                     <div class="slide-number">Chapter One</div>
@@ -2177,8 +2374,92 @@
             </div>
         </div>
         
-        <!-- SLIDE 4: Message 2 -->
-        <div class="slide message-slide locked" id="slide4">
+        <!-- SLIDE 5: Message 2 -->
+        <div class="slide message-slide locked" id="slide5">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Two</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">🎓</div>
+                    </div>
+                    <h2 class="message-title">Your Defining Years</h2>
+                    <div class="message-body">
+                        <p>College is where souls find themselves through <span class="highlight">unexpected friendships, transformative challenges</span>, and quiet moments of profound discovery.</p>
+                        <p>Every experience writes a page in your story. Embrace them all—this is your becoming.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Patience... magic unfolds soon...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 6: Message 3 -->
+        <div class="slide message-slide locked" id="slide6">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Three</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">🌱</div>
+                    </div>
+                    <h2 class="message-title">Beautiful Evolution</h2>
+                    <div class="message-body">
+                        <p>There will be detours and stumbles. Moments when the path feels hidden by winter's fog. But know this—<span class="highlight">every challenge is growth in disguise</span>.</p>
+                        <p>Like a seed beneath winter snow, you're growing even when you can't see it. Trust your season.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The story continues at midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 7: Message 4 -->
+        <div class="slide message-slide locked" id="slide7">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Four</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">💪</div>
+                    </div>
+                    <h2 class="message-title">Your Hidden Strength</h2>
+                    <div class="message-body">
+                        <p>You carry more capability than you realize. I've witnessed the <span class="highlight">quiet determination, the gentle resilience</span> that lives in you.</p>
+                        <p>This year, trust yourself deeply. You're stronger than your doubts, braver than your fears.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Almost there... wait for the bells...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 8: Message 5 -->
+        <div class="slide message-slide locked" id="slide8">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Five</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">☀️</div>
+                    </div>
+                    <h2 class="message-title">Treasure the Small Moments</h2>
+                    <div class="message-body">
+                        <p>In the rush of deadlines and dreams, remember to <span class="highlight">pause and breathe</span>. To laugh until your sides hurt. To watch the first snow fall in peaceful silence.</p>
+                        <p>Life isn't just the destinations we reach—it's every heartbeat, every smile, every quiet morning along the way.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The finale awaits midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 9: Grand Finale -->
+        <div class="slide locked" id="slide9">
             <div class="slide-content">
                 <div class="glass-card">
                     <div class="slide-number">Chapter Two</div>
@@ -2261,8 +2542,8 @@
             </div>
         </div>
         
-        <!-- SLIDE 8: Grand Finale -->
-        <div class="slide locked" id="slide8">
+        <!-- SLIDE 9: Grand Finale -->
+        <div class="slide locked" id="slide9">
             <div class="slide-content">
                 <div class="finale-container">
                     <h2 class="finale-title">Here's to 2026</h2>
@@ -2300,6 +2581,7 @@
         <div class="nav-dot" data-slide="5"></div>
         <div class="nav-dot" data-slide="6"></div>
         <div class="nav-dot" data-slide="7"></div>
+        <div class="nav-dot" data-slide="8"></div>
         <div class="nav-arrow" id="nextBtn">→</div>
     </div>
     
@@ -2438,7 +2720,7 @@
         // NAVIGATION SYSTEM
         // ============================================
         let currentSlide = 0;
-        const totalSlides = 8;
+        const totalSlides = 9;
         const scrollContainer = document.getElementById('scrollContainer');
         const navDots = document.querySelectorAll('.nav-dot');
         const prevBtn = document.getElementById('prevBtn');
@@ -2483,6 +2765,13 @@
             
             if (currentSlide > 0) {
                 scrollHint.style.display = 'none';
+            }
+            
+            // Trigger fireworks on slide 3 (Happy New Year)
+            if (currentSlide === 2) {
+                setTimeout(() => {
+                    createFireworks();
+                }, 500);
             }
         }
         
@@ -2650,6 +2939,101 @@
                 attributes: true,
                 attributeFilter: ['class']
             });
+        }
+        
+        // ============================================
+        // FIREWORKS FOR SLIDE 3 (Happy New Year)
+        // ============================================
+        function createFireworks() {
+            const fireworkContainer = document.getElementById('fireworkContainer');
+            if (!fireworkContainer) return;
+            
+            const isMobile = window.innerWidth <= 768;
+            const fireworkCount = isMobile ? 5 : 8;
+            
+            function launchFirework() {
+                const startX = Math.random() * 80 + 10; // 10-90%
+                const startY = Math.random() * 30 + 60; // 60-90% (bottom area)
+                const endX = Math.random() * 60 + 20; // 20-80%
+                const endY = Math.random() * 30 + 10; // 10-40% (top area)
+                
+                const colors = ['#FFD700', '#FFA500', '#FF69B4', '#87CEEB', '#FF6347', '#32CD32', '#9370DB'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Create trail
+                const trail = document.createElement('div');
+                trail.className = 'firework';
+                trail.style.left = startX + '%';
+                trail.style.top = startY + '%';
+                trail.style.background = color;
+                fireworkContainer.appendChild(trail);
+                
+                // Animate to explosion point
+                trail.animate([
+                    { left: startX + '%', top: startY + '%', opacity: 1 },
+                    { left: endX + '%', top: endY + '%', opacity: 1 }
+                ], {
+                    duration: 1000,
+                    easing: 'ease-out'
+                }).onfinish = () => {
+                    trail.remove();
+                    explodeFirework(endX, endY, color);
+                };
+            }
+            
+            function explodeFirework(x, y, color) {
+                const particleCount = isMobile ? 20 : 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'firework';
+                    particle.style.left = x + '%';
+                    particle.style.top = y + '%';
+                    particle.style.background = color;
+                    fireworkContainer.appendChild(particle);
+                    
+                    const angle = (Math.PI * 2 * i) / particleCount;
+                    const velocity = 50 + Math.random() * 100;
+                    const endX = x + (Math.cos(angle) * velocity / window.innerWidth * 100);
+                    const endY = y + (Math.sin(angle) * velocity / window.innerHeight * 100);
+                    
+                    particle.animate([
+                        { 
+                            left: x + '%', 
+                            top: y + '%', 
+                            opacity: 1,
+                            transform: 'scale(1)'
+                        },
+                        { 
+                            left: endX + '%', 
+                            top: endY + '%', 
+                            opacity: 0,
+                            transform: 'scale(0.5)'
+                        }
+                    ], {
+                        duration: 1000 + Math.random() * 500,
+                        easing: 'ease-out'
+                    }).onfinish = () => {
+                        particle.remove();
+                    };
+                }
+            }
+            
+            // Launch multiple fireworks with delays
+            for (let i = 0; i < fireworkCount; i++) {
+                setTimeout(() => {
+                    launchFirework();
+                }, i * 600);
+            }
+            
+            // Continue launching fireworks every 2 seconds for slide 3
+            const fireworkInterval = setInterval(() => {
+                if (currentSlide === 2) {
+                    launchFirework();
+                } else {
+                    clearInterval(fireworkInterval);
+                }
+            }, 2000);
         }
     </script>
     
