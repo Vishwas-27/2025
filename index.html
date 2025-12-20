@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Winter Journey to 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background: #0a1628;
+            color: #fff;
+            cursor: default;
+        }
+        
+        /* Winter Snowy Background */
+        .winter-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 50%, #1a2942 0%, #0f1820 50%, #0a1628 100%);
+            z-index: 0;
+            animation: winterBreath 20s ease-in-out infinite;
+        }
+        
+        @keyframes winterBreath {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Aurora Borealis Effect */
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(135, 206, 250, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 40%, rgba(176, 224, 230, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 60%, rgba(173, 216, 230, 0.2) 0%, transparent 50%);
+            animation: auroraWave 25s ease-in-out infinite;
+        }
+        
+        @keyframes auroraWave {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateY(-30px) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+        
+        /* Snowfall System */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            pointer-events: none;
+            z-index: 3;
+            animation: snowfall linear infinite;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        @keyframes snowfall {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(var(--drift)) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+        
+        /* Frost Effect Overlay */
+        .frost-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 15%),
+                radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 18%);
+            animation: frostShimmer 15s ease-in-out infinite;
+        }
+        
+        @keyframes frostShimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Main Container */
+        .scroll-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 10;
+        }
+        
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 60px;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Frosted Glass Cards */
+        .glass-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.03) 100%);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(173, 216, 230, 0.3);
+            border-radius: 35px;
+            padding: 70px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                0 0 80px rgba(135, 206, 250, 0.1);
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(173, 216, 230, 0.1) 0%, transparent 70%);
+            animation: rotate 25s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.15), 
+                transparent);
+            animation: shimmerWave 4s ease-in-out infinite;
+        }
+        
+        @keyframes shimmerWave {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Animated border effect */
+        .slide.active .glass-card {
+            animation: cardGlow 5s ease-in-out infinite;
+        }
+        
+        @keyframes cardGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 15px 50px rgba(0, 0, 0, 0.4),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                    0 0 80px rgba(135, 206, 250, 0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 15px 50px rgba(0, 0, 0, 0.4),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.25),
+                    0 0 120px rgba(135, 206, 250, 0.3);
+            }
+        }
+        
+        /* SLIDE 1: Countdown Timer (First Slide) */
+        #slide1 .timer-header {
+            margin-bottom: 80px;
+        }
+        
+        #slide1 .timer-pretitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: rgba(173, 216, 230, 0.7);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        #slide1 .timer-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-style: italic;
+            background: linear-gradient(135deg, 
+                #E0F7FF 0%, 
+                #B0E5FC 50%,
+                #87CEEB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            animation: titleGlow 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(135, 206, 250, 0.4));
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 30px rgba(135, 206, 250, 0.4));
+            }
+            50% { 
+                filter: drop-shadow(0 0 50px rgba(135, 206, 250, 0.7));
+            }
+        }
+        
+        #slide1 .timer-subtitle {
+            font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+        
+        .countdown-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 35px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        
+        .time-unit {
+            position: relative;
+            perspective: 1500px;
+        }
+        
+        .time-unit-inner {
+            background: linear-gradient(135deg, 
+                rgba(173, 216, 230, 0.15) 0%, 
+                rgba(135, 206, 250, 0.08) 100%);
+            border: 2px solid rgba(173, 216, 230, 0.4);
+            border-radius: 30px;
+            padding: 45px 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(15px);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .time-unit:hover .time-unit-inner {
+            transform: translateY(-20px) rotateX(8deg) scale(1.05);
+            border-color: rgba(173, 216, 230, 0.7);
+            box-shadow: 
+                0 30px 80px rgba(135, 206, 250, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .time-unit-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, 
+                rgba(173, 216, 230, 0.2) 0%, 
+                transparent 70%);
+            animation: ripple 4s ease-in-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes ripple {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        
+        .time-unit-inner::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                transparent,
+                rgba(173, 216, 230, 0.4),
+                transparent);
+            border-radius: 30px;
+            opacity: 0;
+            animation: borderShimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes borderShimmer {
+            0%, 100% {
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: rotate(180deg);
+            }
+        }
+        
+        .time-number {
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, #E0F7FF 0%, #87CEEB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 30px rgba(135, 206, 250, 0.6);
+            animation: numberPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes numberPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.95; transform: scale(1.02); }
+        }
+        
+        .time-label {
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: rgba(173, 216, 230, 0.8);
+            margin-top: 18px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* SLIDE 2: Epic Year Transition */
+        #slide2 .year-container {
+            perspective: 1500px;
+            margin-bottom: 70px;
+            position: relative;
+            min-height: 300px;
+        }
+        
+        #slide2 .year-old {
+            font-size: clamp(5rem, 14vw, 12rem);
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            display: block;
+            position: relative;
+            background: linear-gradient(135deg, 
+                #E0F7FF 0%, 
+                #B0E5FC 50%,
+                #87CEEB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(50px) scale(0.8);
+            animation: year2025Appear 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                       year2025MoveUp 0.8s ease 2s forwards,
+                       year2025FadeOut 0.6s ease 3.2s forwards;
+            filter: drop-shadow(0 0 40px rgba(135, 206, 250, 0.6));
+        }
+        
+        @keyframes year2025Appear {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8) rotateX(-20deg);
+                filter: blur(10px) drop-shadow(0 0 40px rgba(135, 206, 250, 0.6));
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0deg);
+                filter: blur(0) drop-shadow(0 0 40px rgba(135, 206, 250, 0.6));
+            }
+        }
+        
+        @keyframes year2025MoveUp {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-30px) scale(0.95);
+            }
+        }
+        
+        @keyframes year2025FadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.15;
+            }
+        }
+        
+        #slide2 .year-old::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(135, 206, 250, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: yearHalo 0.8s ease 2s forwards;
+            z-index: -1;
+        }
+        
+        @keyframes yearHalo {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+        
+        #slide2 .year-old::after {
+            content: '';
+            position: absolute;
+            left: -10%;
+            top: 50%;
+            width: 0%;
+            height: 6px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(135, 206, 250, 0.3) 10%,
+                #87CEEB 50%,
+                rgba(135, 206, 250, 0.3) 90%,
+                transparent 100%);
+            transform: translateY(-50%);
+            animation: strikeThrough 1s cubic-bezier(0.65, 0, 0.35, 1) 2.8s forwards;
+            box-shadow: 0 0 40px rgba(135, 206, 250, 0.8),
+                        0 0 80px rgba(135, 206, 250, 0.4);
+            border-radius: 3px;
+        }
+        
+        @keyframes strikeThrough {
+            0% { 
+                width: 0%;
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% { 
+                width: 120%;
+                opacity: 1;
+            }
+        }
+        
+        #slide2 .year-new {
+            font-size: clamp(6rem, 18vw, 15rem);
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            display: block;
+            position: relative;
+            background: linear-gradient(135deg, 
+                #E0F7FF 0%, 
+                #B0E5FC 20%,
+                #87CEEB 40%,
+                #B0E5FC 60%,
+                #E0F7FF 80%,
+                #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 400% 400%;
+            opacity: 0;
+            transform: scale(0) translateY(100px);
+            animation: 
+                year2026Explode 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 3.8s forwards,
+                epicGradient 6s ease 5s infinite,
+                winterGlow 4s ease-in-out 5s infinite,
+                year2026Float 3s ease-in-out 5.3s infinite;
+            filter: drop-shadow(0 0 60px rgba(135, 206, 250, 0.8))
+                    drop-shadow(0 0 120px rgba(173, 216, 230, 0.5));
+        }
+        
+        @keyframes year2026Explode {
+            0% {
+                opacity: 0;
+                transform: scale(0) translateY(100px) rotate(-20deg);
+                filter: blur(20px) brightness(2) drop-shadow(0 0 100px rgba(135, 206, 250, 1));
+            }
+            40% {
+                opacity: 1;
+                filter: blur(5px) brightness(1.5) drop-shadow(0 0 100px rgba(135, 206, 250, 1));
+            }
+            70% {
+                transform: scale(1.2) translateY(-20px) rotate(5deg);
+                filter: blur(0) brightness(1.2) drop-shadow(0 0 80px rgba(135, 206, 250, 0.9));
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
+                filter: blur(0) brightness(1) drop-shadow(0 0 60px rgba(135, 206, 250, 0.8));
+            }
+        }
+        
+        @keyframes year2026Float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-15px) scale(1.02);
+            }
+        }
+        
+        #slide2 .year-new::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(135, 206, 250, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: year2026Burst 1.2s ease 3.8s;
+            z-index: -1;
+        }
+        
+        @keyframes year2026Burst {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(3);
+            }
+        }
+        
+        #slide2 .year-new::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 70%);
+            background-size: 200% 200%;
+            opacity: 0;
+            animation: sparklePass 1.5s ease 4.5s;
+            pointer-events: none;
+        }
+        
+        @keyframes sparklePass {
+            0% {
+                opacity: 0;
+                background-position: -100% -100%;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                background-position: 200% 200%;
+            }
+        }
+        
+        @keyframes epicGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes winterGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 60px rgba(135, 206, 250, 0.8))
+                        drop-shadow(0 0 120px rgba(173, 216, 230, 0.5));
+            }
+            50% { 
+                filter: drop-shadow(0 0 90px rgba(135, 206, 250, 1))
+                        drop-shadow(0 0 180px rgba(173, 216, 230, 0.8));
+            }
+        }
+        
+        #slide2 .subtitle {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-family: 'Great Vibes', cursive;
+            color: rgba(173, 216, 230, 0.9);
+            margin-top: 50px;
+            opacity: 0;
+            position: relative;
+            animation: fadeInUp 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 5.5s forwards,
+                       subtitleGlow 3s ease 7s infinite;
+            text-shadow: 0 0 30px rgba(135, 206, 250, 0.6);
+        }
+        
+        @keyframes fadeInUp {
+            0% { 
+                opacity: 0; 
+                transform: translateY(40px);
+                filter: blur(10px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+        
+        @keyframes subtitleGlow {
+            0%, 100% {
+                text-shadow: 0 0 30px rgba(135, 206, 250, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 50px rgba(135, 206, 250, 0.9),
+                             0 0 80px rgba(173, 216, 230, 0.5);
+            }
+        }
+        
+        #slide2 .snowflake-ornament {
+            font-size: 4rem;
+            margin: 40px 0;
+            opacity: 0;
+            position: relative;
+            display: inline-block;
+            animation: snowflakeAppear 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 6s forwards,
+                       snowflakeSpin 8s linear 7.2s infinite;
+            filter: drop-shadow(0 0 30px rgba(135, 206, 250, 0.8));
+        }
+        
+        @keyframes snowflakeAppear {
+            0% { 
+                opacity: 0; 
+                transform: rotate(-180deg) scale(0);
+                filter: blur(10px) drop-shadow(0 0 50px rgba(135, 206, 250, 1));
+            }
+            60% {
+                transform: rotate(20deg) scale(1.3);
+                filter: blur(0) drop-shadow(0 0 50px rgba(135, 206, 250, 1));
+            }
+            100% { 
+                opacity: 1; 
+                transform: rotate(0deg) scale(1);
+                filter: blur(0) drop-shadow(0 0 30px rgba(135, 206, 250, 0.8));
+            }
+        }
+        
+        @keyframes snowflakeSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        #slide2 .snowflake-ornament::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(135, 206, 250, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: snowflakePulse 2s ease-in-out 7s infinite;
+            z-index: -1;
+        }
+        
+        @keyframes snowflakePulse {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+        
+        /* Particle System */
+        .particles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(173, 216, 230, 1) 0%, rgba(135, 206, 250, 0.5) 100%);
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 20px rgba(135, 206, 250, 0.8);
+        }
+        
+        .particle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(135, 206, 250, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        /* Message Slides */
+        .message-slide .slide-number {
+            font-size: 0.85rem;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: rgba(173, 216, 230, 0.5);
+            margin-bottom: 45px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .message-slide .slide-number::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #87CEEB, transparent);
+            animation: lineExpand 1.2s ease forwards;
+        }
+        
+        @keyframes lineExpand {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+        
+        .message-slide .icon-wrapper {
+            font-size: clamp(4.5rem, 9vw, 7rem);
+            margin-bottom: 45px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .message-slide .icon-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(173, 216, 230, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: iconHalo 4s ease-in-out infinite;
+        }
+        
+        @keyframes iconHalo {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+        }
+        
+        .message-slide .icon-wrapper::after {
+            content: '✨';
+            position: absolute;
+            top: -20%;
+            right: -20%;
+            font-size: 2rem;
+            opacity: 0;
+            animation: sparkle1 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle1 {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(0deg) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-10px, -10px) rotate(180deg) scale(1);
+            }
+        }
+        
+        .message-slide .message-icon {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            animation: iconDance 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(135, 206, 250, 0.6));
+        }
+        
+        @keyframes iconDance {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(-10deg); }
+            75% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .message-slide .message-title {
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.25;
+            margin-bottom: 55px;
+            letter-spacing: 0.02em;
+            background: linear-gradient(135deg, #FFFFFF 0%, #E0F7FF 50%, #B0E5FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .message-slide.active .message-title {
+            animation: titleDreamReveal 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        @keyframes titleDreamReveal {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.85);
+                filter: blur(15px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+        
+        .message-slide .message-body {
+            font-size: clamp(1.25rem, 2.8vw, 1.7rem);
+            line-height: 2.4;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .message-slide .message-body p {
+            margin-bottom: 35px;
+            opacity: 0;
+            transform: translateY(25px);
+            position: relative;
+        }
+        
+        .message-slide .message-body p::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #87CEEB, transparent);
+            transition: width 1s ease;
+        }
+        
+        .message-slide.active .message-body p:nth-child(1) {
+            animation: textMagicReveal 1.2s ease 0.5s forwards;
+        }
+        
+        .message-slide.active .message-body p:nth-child(1)::before {
+            animation: underlineGrow 0.8s ease 1.7s forwards;
+        }
+        
+        @keyframes underlineGrow {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .message-slide.active .message-body p:nth-child(2) {
+            animation: textMagicReveal 1.2s ease 0.9s forwards;
+        }
+        
+        .message-slide.active .message-body p:nth-child(2)::before {
+            animation: underlineGrow 0.8s ease 2.1s forwards;
+        }
+        
+        @keyframes textMagicReveal {
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        .highlight {
+            color: #87CEEB;
+            font-weight: 500;
+            position: relative;
+            text-shadow: 0 0 20px rgba(135, 206, 250, 0.5);
+        }
+        
+        /* FINALE SLIDE */
+        #slide8 .finale-container {
+            position: relative;
+        }
+        
+        #slide8 .finale-container::before,
+        #slide8 .finale-container::after {
+            content: '✨';
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatingLight 5s ease-in-out infinite;
+        }
+        
+        #slide8 .finale-container::before {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        #slide8 .finale-container::after {
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 2.5s;
+        }
+        
+        @keyframes floatingLight {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-30px) scale(1);
+            }
+        }
+        
+        #slide8 .finale-title {
+            font-size: clamp(4.5rem, 11vw, 9rem);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.2;
+            margin-bottom: 70px;
+            background: linear-gradient(135deg, 
+                #FFFFFF 0%, 
+                #E0F7FF 25%,
+                #B0E5FC 50%,
+                #87CEEB 75%,
+                #E0F7FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 400% 400%;
+            animation: 
+                epicGradient 8s ease infinite,
+                finaleGlow 5s ease-in-out infinite;
+            position: relative;
+        }
+        
+        #slide8 .finale-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(135, 206, 250, 0.2) 0%, transparent 70%);
+            z-index: -1;
+            animation: titleAura 4s ease-in-out infinite;
+        }
+        
+        @keyframes titleAura {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        @keyframes finaleGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 50px rgba(135, 206, 250, 0.7))
+                        drop-shadow(0 0 100px rgba(173, 216, 230, 0.4));
+            }
+            50% { 
+                filter: drop-shadow(0 0 80px rgba(135, 206, 250, 1))
+                        drop-shadow(0 0 150px rgba(173, 216, 230, 0.7));
+            }
+        }
+        
+        #slide8 .finale-text {
+            font-size: clamp(1.3rem, 3vw, 1.9rem);
+            line-height: 2.5;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 950px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        #slide8 .ornamental-divider {
+            margin: 70px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 35px;
+            position: relative;
+        }
+        
+        #slide8 .ornamental-divider::before,
+        #slide8 .ornamental-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(173, 216, 230, 0.6), transparent);
+            max-width: 220px;
+            animation: lineWave 3s ease-in-out infinite;
+        }
+        
+        @keyframes lineWave {
+            0%, 100% {
+                opacity: 0.6;
+                transform: scaleX(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleX(1.05);
+            }
+        }
+        
+        #slide8 .ornamental-icon {
+            font-size: 2.5rem;
+            color: #87CEEB;
+            animation: sparkleSnow 5s linear infinite;
+            position: relative;
+        }
+        
+        #slide8 .ornamental-icon::before,
+        #slide8 .ornamental-icon::after {
+            content: '✨';
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+        }
+        
+        #slide8 .ornamental-icon::before {
+            top: -15px;
+            left: -20px;
+            animation: miniSparkle1 3s ease-in-out infinite;
+        }
+        
+        #slide8 .ornamental-icon::after {
+            bottom: -15px;
+            right: -20px;
+            animation: miniSparkle2 3s ease-in-out 1.5s infinite;
+        }
+        
+        @keyframes miniSparkle1 {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+        
+        @keyframes miniSparkle2 {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(-180deg);
+            }
+        }
+        
+        @keyframes sparkleSnow {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+        }
+        
+        #slide8 .signature {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-family: 'Great Vibes', cursive;
+            color: rgba(173, 216, 230, 0.9);
+            margin-top: 90px;
+            letter-spacing: 0.05em;
+            position: relative;
+            animation: signatureGlow 4s ease-in-out infinite;
+        }
+        
+        #slide8 .signature::before {
+            content: '—';
+            margin-right: 20px;
+            color: rgba(173, 216, 230, 0.6);
+            animation: dashPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes signatureGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(135, 206, 250, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(135, 206, 250, 0.8),
+                             0 0 60px rgba(173, 216, 230, 0.5);
+            }
+        }
+        
+        @keyframes dashPulse {
+            0%, 100% {
+                opacity: 0.6;
+                transform: translateX(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-5px);
+            }
+        }
+        
+        /* Locked State */
+        .slide.locked {
+            pointer-events: none;
+        }
+        
+        .slide.locked .glass-card {
+            opacity: 0.3;
+            filter: blur(5px);
+        }
+        
+        .lock-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 100;
+            display: none;
+        }
+        
+        .slide.locked .lock-overlay {
+            display: block;
+        }
+        
+        .lock-icon {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            animation: lockPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(173, 216, 230, 0.6));
+        }
+        
+        @keyframes lockPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        .lock-message {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: rgba(173, 216, 230, 0.9);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-shadow: 0 0 20px rgba(135, 206, 250, 0.5);
+        }
+        
+        /* Birthday Link */
+        .birthday-link {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 200;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+        
+        .birthday-link.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .birthday-btn {
+            padding: 20px 38px;
+            background: linear-gradient(135deg, 
+                rgba(173, 216, 230, 0.2) 0%, 
+                rgba(135, 206, 250, 0.15) 100%);
+            border: 2px solid rgba(173, 216, 230, 0.5);
+            border-radius: 50px;
+            color: rgba(173, 216, 230, 1);
+            font-size: 0.9rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .birthday-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .birthday-btn:hover::before {
+            left: 100%;
+        }
+        
+        .birthday-btn:hover {
+            background: linear-gradient(135deg, 
+                rgba(173, 216, 230, 0.3) 0%, 
+                rgba(135, 206, 250, 0.25) 100%);
+            border-color: rgba(173, 216, 230, 0.8);
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 
+                0 25px 70px rgba(135, 206, 250, 0.4),
+                0 0 100px rgba(173, 216, 230, 0.3);
+        }
+        
+        .birthday-icon {
+            font-size: 1.3rem;
+            animation: cakeBounce 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes cakeBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(8deg); }
+        }
+        
+        /* Developer Secret Unlock Button */
+        .dev-unlock {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 300;
+            opacity: 0;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .dev-unlock:hover {
+            opacity: 1 !important;
+            transform: scale(1.1);
+            background: rgba(173, 216, 230, 0.2);
+            border-color: rgba(173, 216, 230, 0.6);
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            bottom: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            padding: 18px 30px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(25px);
+            border-radius: 50px;
+            border: 2px solid rgba(173, 216, 230, 0.3);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: rgba(173, 216, 230, 0.4);
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(173, 216, 230, 0.5);
+            position: relative;
+        }
+        
+        .nav-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: rgba(173, 216, 230, 0.2);
+            transition: transform 0.5s ease;
+        }
+        
+        .nav-dot:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .nav-dot.active {
+            width: 55px;
+            border-radius: 12px;
+            background: rgba(173, 216, 230, 0.9);
+            box-shadow: 
+                0 0 35px rgba(135, 206, 250, 0.7),
+                0 0 70px rgba(173, 216, 230, 0.4);
+        }
+        
+        .nav-arrow {
+            width: 55px;
+            height: 55px;
+            border: 2px solid rgba(173, 216, 230, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 1.4rem;
+            color: rgba(173, 216, 230, 1);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-arrow:hover {
+            background: rgba(173, 216, 230, 0.2);
+            border-color: rgba(173, 216, 230, 0.9);
+            transform: scale(1.2);
+            box-shadow: 0 0 40px rgba(135, 206, 250, 0.5);
+        }
+        
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        /* Scroll Hint */
+        .scroll-hint {
+            position: fixed;
+            bottom: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(173, 216, 230, 0.6);
+            z-index: 50;
+            animation: hintFade 4s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        @keyframes hintFade {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .scroll-hint::after {
+            content: '→';
+            font-size: 1.1rem;
+            animation: arrowDrift 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes arrowDrift {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(12px); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slide { padding: 60px 40px; }
+            .glass-card { padding: 55px 45px; }
+            .countdown-display { gap: 25px; }
+        }
+        
+        @media (max-width: 768px) {
+            .slide { padding: 50px 30px; }
+            .glass-card { padding: 45px 35px; }
+            .countdown-display {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .time-unit-inner { padding: 35px 18px; }
+            .birthday-link { bottom: 30px; right: 30px; }
+            .birthday-btn { padding: 16px 28px; font-size: 0.75rem; }
+            .nav-container { bottom: 30px; padding: 15px 25px; gap: 12px; }
+            .nav-arrow { width: 45px; height: 45px; font-size: 1.2rem; }
+            .nav-dot { width: 9px; height: 9px; }
+            .nav-dot.active { width: 40px; }
+            .scroll-hint { bottom: 110px; font-size: 0.65rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .slide { padding: 40px 20px; }
+            .glass-card { padding: 35px 25px; }
+            .birthday-btn { padding: 14px 22px; font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Winter Background -->
+    <div class="winter-bg"></div>
+    <div class="aurora"></div>
+    <div class="frost-overlay"></div>
+    
+    <!-- Snowfall Container -->
+    <div id="snowfall"></div>
+    
+    <!-- Developer Secret Unlock Button -->
+    <div class="dev-unlock" id="devUnlock" title="Developer Mode">🔓</div>
+    
+    <!-- Scroll Hint -->
+    <div class="scroll-hint" id="scrollHint">Waiting for the magic</div>
+    
+    <!-- Birthday Link -->
+    <a href="https://vishwas-27.github.io/survey/" target="_blank" class="birthday-link" id="birthdayLink">
+        <div class="birthday-btn">
+            <span class="birthday-icon">🎂</span>
+            <span>Relive Birthday</span>
+        </div>
+    </a>
+    
+    <!-- Main Container -->
+    <div class="scroll-container" id="scrollContainer">
+        
+        <!-- SLIDE 1: Countdown (First Slide) -->
+        <div class="slide active" id="slide1">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="timer-header">
+                        <p class="timer-pretitle">The Journey Begins In</p>
+                        <h1 class="timer-title">Moments Until Magic</h1>
+                        <p class="timer-subtitle">Where winter dreams meet new beginnings</p>
+                    </div>
+                    <div class="countdown-display">
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="days">00</div>
+                                <div class="time-label">Days</div>
+                            </div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="hours">00</div>
+                                <div class="time-label">Hours</div>
+                            </div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="minutes">00</div>
+                                <div class="time-label">Minutes</div>
+                            </div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="seconds">00</div>
+                                <div class="time-label">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 2: Year Transition -->
+        <div class="slide locked" id="slide2">
+            <div class="slide-content">
+                <div class="year-container">
+                    <div class="year-old">2025</div>
+                    <div class="year-new">2026</div>
+                    <div class="particles" id="particles"></div>
+                </div>
+                <div class="snowflake-ornament">❄️</div>
+                <p class="subtitle">A Winter's Tale Begins</p>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Awaiting the midnight hour...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 3: Message 1 -->
+        <div class="slide message-slide locked" id="slide3">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter One</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">✨</div>
+                    </div>
+                    <h2 class="message-title">A Pristine Canvas</h2>
+                    <div class="message-body">
+                        <p>Like the first snowfall blanketing the earth, every new year arrives as an <span class="highlight">untouched canvas</span>—pure, infinite, and waiting for your unique story.</p>
+                        <p>2026 is yours to paint. Make it a masterpiece of moments that matter.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">This chapter reveals at midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 4: Message 2 -->
+        <div class="slide message-slide locked" id="slide4">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Two</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">🎓</div>
+                    </div>
+                    <h2 class="message-title">Your Defining Years</h2>
+                    <div class="message-body">
+                        <p>College is where souls find themselves through <span class="highlight">unexpected friendships, transformative challenges</span>, and quiet moments of profound discovery.</p>
+                        <p>Every experience writes a page in your story. Embrace them all—this is your becoming.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Patience... magic unfolds soon...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 5: Message 3 -->
+        <div class="slide message-slide locked" id="slide5">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Three</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">🌱</div>
+                    </div>
+                    <h2 class="message-title">Beautiful Evolution</h2>
+                    <div class="message-body">
+                        <p>There will be detours and stumbles. Moments when the path feels hidden by winter's fog. But know this—<span class="highlight">every challenge is growth in disguise</span>.</p>
+                        <p>Like a seed beneath winter snow, you're growing even when you can't see it. Trust your season.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The story continues at midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 6: Message 4 -->
+        <div class="slide message-slide locked" id="slide6">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Four</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">💪</div>
+                    </div>
+                    <h2 class="message-title">Your Hidden Strength</h2>
+                    <div class="message-body">
+                        <p>You carry more capability than you realize. I've witnessed the <span class="highlight">quiet determination, the gentle resilience</span> that lives in you.</p>
+                        <p>This year, trust yourself deeply. You're stronger than your doubts, braver than your fears.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Almost there... wait for the bells...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 7: Message 5 -->
+        <div class="slide message-slide locked" id="slide7">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Five</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">☀️</div>
+                    </div>
+                    <h2 class="message-title">Treasure the Small Moments</h2>
+                    <div class="message-body">
+                        <p>In the rush of deadlines and dreams, remember to <span class="highlight">pause and breathe</span>. To laugh until your sides hurt. To watch the first snow fall in peaceful silence.</p>
+                        <p>Life isn't just the destinations we reach—it's every heartbeat, every smile, every quiet morning along the way.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The finale awaits midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 8: Grand Finale -->
+        <div class="slide locked" id="slide8">
+            <div class="slide-content">
+                <div class="finale-container">
+                    <h2 class="finale-title">Here's to 2026</h2>
+                    <p class="finale-text">
+                        May this year wrap you in warmth when winter feels cold, bring clarity when the path seems unclear, and offer courage when you need it most.
+                    </p>
+                    <p class="finale-text">
+                        May your college journey overflow with growth, your days shimmer with purpose, and your heart hold the quiet confidence that everything unfolds exactly as it should.
+                    </p>
+                    <div class="ornamental-divider">
+                        <span class="ornamental-icon">❄️</span>
+                    </div>
+                    <p class="finale-text">
+                        Wishing you a year of profound beginnings, meaningful connections, and the courage to become who you're truly meant to be.
+                    </p>
+                    <div class="signature">Vishwas</div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The final message reveals at midnight...</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="nav-arrow" id="prevBtn">←</div>
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+        <div class="nav-dot" data-slide="6"></div>
+        <div class="nav-dot" data-slide="7"></div>
+        <div class="nav-arrow" id="nextBtn">→</div>
+    </div>
+    
+    <script>
+        // ============================================
+        // SNOWFALL SYSTEM
+        // ============================================
+        const snowfallContainer = document.getElementById('snowfall');
+        const snowflakeCount = 50;
+        
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.fontSize = (Math.random() * 1.5 + 0.5) + 'em';
+            snowflake.style.opacity = Math.random() * 0.8 + 0.2;
+            
+            const drift = (Math.random() - 0.5) * 100;
+            snowflake.style.setProperty('--drift', drift + 'px');
+            
+            const duration = Math.random() * 10 + 10;
+            snowflake.style.animationDuration = duration + 's';
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            
+            snowfallContainer.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+                createSnowflake();
+            }, (duration + 5) * 1000);
+        }
+        
+        for (let i = 0; i < snowflakeCount; i++) {
+            setTimeout(() => createSnowflake(), i * 200);
+        }
+        
+        // ============================================
+        // LOCK/UNLOCK SYSTEM
+        // ============================================
+        let isUnlocked = false;
+        const devUnlockBtn = document.getElementById('devUnlock');
+        const slides = document.querySelectorAll('.slide');
+        
+        // Show dev button on triple-click top-left corner
+        let clickCount = 0;
+        let clickTimer;
+        
+        document.addEventListener('click', (e) => {
+            if (e.clientX < 100 && e.clientY < 100) {
+                clickCount++;
+                clearTimeout(clickTimer);
+                
+                if (clickCount === 3) {
+                    devUnlockBtn.style.opacity = '0.5';
+                    clickCount = 0;
+                }
+                
+                clickTimer = setTimeout(() => {
+                    clickCount = 0;
+                }, 1000);
+            }
+        });
+        
+        // Developer unlock functionality
+        devUnlockBtn.addEventListener('click', () => {
+            const code = prompt('Enter developer code:');
+            if (code === 'VISHWAS2026' || code === 'vishwas2026') {
+                isUnlocked = true;
+                unlockAllSlides();
+                devUnlockBtn.innerHTML = '🔓';
+                devUnlockBtn.style.opacity = '0.7';
+                alert('Developer mode activated! All slides unlocked.');
+            } else if (code !== null) {
+                alert('Invalid code. Try again!');
+            }
+        });
+        
+        function unlockAllSlides() {
+            slides.forEach(slide => {
+                slide.classList.remove('locked');
+            });
+        }
+        
+        // ============================================
+        // COUNTDOWN TIMER
+        // ============================================
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        const timerTitle = document.querySelector('.timer-title');
+        
+        let countdownComplete = false;
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const newYear = new Date('January 1, 2026 00:00:00').getTime();
+            const distance = newYear - now;
+            
+            if (distance < 0 && !countdownComplete) {
+                countdownComplete = true;
+                daysEl.textContent = '00';
+                hoursEl.textContent = '00';
+                minutesEl.textContent = '00';
+                secondsEl.textContent = '00';
+                timerTitle.textContent = 'The Magic Begins! ✨';
+                
+                // Unlock all slides and auto-transition
+                setTimeout(() => {
+                    unlockAllSlides();
+                    autoTransitionToSlide2();
+                }, 2000);
+                
+                return;
+            }
+            
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // ============================================
+        // NAVIGATION SYSTEM
+        // ============================================
+        let currentSlide = 0;
+        const totalSlides = 8;
+        const scrollContainer = document.getElementById('scrollContainer');
+        const navDots = document.querySelectorAll('.nav-dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const scrollHint = document.getElementById('scrollHint');
+        const birthdayLink = document.getElementById('birthdayLink');
+        
+        function updateSlide(index, direction = 'next') {
+            // Check if slide is locked
+            if (slides[index].classList.contains('locked') && !isUnlocked) {
+                alert('❄️ This chapter is still frozen in time. Wait for midnight or unlock with developer code!');
+                return;
+            }
+            
+            if (index < 0 || index >= totalSlides) return;
+            
+            currentSlide = index;
+            scrollContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            navDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+            
+            prevBtn.classList.toggle('disabled', currentSlide === 0);
+            nextBtn.classList.toggle('disabled', currentSlide === totalSlides - 1);
+            
+            // Show birthday button only on last slide
+            if (currentSlide === totalSlides - 1 && !slides[currentSlide].classList.contains('locked')) {
+                setTimeout(() => {
+                    birthdayLink.classList.add('visible');
+                }, 1000);
+            } else {
+                birthdayLink.classList.remove('visible');
+            }
+            
+            if (currentSlide > 0) {
+                scrollHint.style.display = 'none';
+            }
+        }
+        
+        function autoTransitionToSlide2() {
+            setTimeout(() => {
+                updateSlide(1, 'next');
+                scrollHint.textContent = 'Navigate';
+                scrollHint.style.display = 'flex';
+            }, 1000);
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) updateSlide(currentSlide - 1, 'prev');
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) updateSlide(currentSlide + 1, 'next');
+        });
+        
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                const direction = index > currentSlide ? 'next' : 'prev';
+                updateSlide(index, direction);
+            });
+        });
+        
+        // ============================================
+        // KEYBOARD NAVIGATION
+        // ============================================
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                updateSlide(currentSlide - 1, 'prev');
+            } else if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
+                updateSlide(currentSlide + 1, 'next');
+            }
+        });
+        
+        // ============================================
+        // MOUSE WHEEL NAVIGATION
+        // ============================================
+        let isScrolling = false;
+        
+        document.addEventListener('wheel', (e) => {
+            if (isScrolling) return;
+            isScrolling = true;
+            
+            if (e.deltaY > 0 && currentSlide < totalSlides - 1) {
+                updateSlide(currentSlide + 1, 'next');
+            } else if (e.deltaY < 0 && currentSlide > 0) {
+                updateSlide(currentSlide - 1, 'prev');
+            }
+            
+            setTimeout(() => {
+                isScrolling = false;
+            }, 1200);
+        });
+        
+        // ============================================
+        // TOUCH SWIPE
+        // ============================================
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0 && currentSlide < totalSlides - 1) {
+                    updateSlide(currentSlide + 1, 'next');
+                } else if (diff < 0 && currentSlide > 0) {
+                    updateSlide(currentSlide - 1, 'prev');
+                }
+            }
+        }
+        
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        updateSlide(0);
+        
+        // ============================================
+        // PARTICLE EXPLOSION FOR SLIDE 2
+        // ============================================
+        function createParticleExplosion() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const velocity = 100 + Math.random() * 150;
+                const size = 4 + Math.random() * 8;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                
+                const endX = Math.cos(angle) * velocity;
+                const endY = Math.sin(angle) * velocity;
+                
+                const duration = 1 + Math.random() * 0.5;
+                
+                particle.style.animation = `particleExplode${i} ${duration}s ease-out forwards`;
+                
+                const keyframes = `
+                    @keyframes particleExplode${i} {
+                        0% {
+                            transform: translate(-50%, -50%) translate(0, 0) scale(0);
+                            opacity: 0;
+                        }
+                        10% {
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translate(-50%, -50%) translate(${endX}px, ${endY}px) scale(1);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                
+                const styleSheet = document.createElement('style');
+                styleSheet.textContent = keyframes;
+                document.head.appendChild(styleSheet);
+                
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                    styleSheet.remove();
+                }, duration * 1000 + 100);
+            }
+        }
+        
+        // Trigger particle explosion when slide 2 becomes active
+        const observerSlide2 = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.id === 'slide2' && mutation.target.classList.contains('active')) {
+                    setTimeout(() => {
+                        createParticleExplosion();
+                    }, 3800);
+                }
+            });
+        });
+        
+        const slide2Element = document.getElementById('slide2');
+        if (slide2Element) {
+            observerSlide2.observe(slide2Element, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        }
+    </script>
+    
+</body>
+</html>
