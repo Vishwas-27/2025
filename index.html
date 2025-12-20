@@ -1,8 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#0a1628">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>A Winter Journey to 2026</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
     <style>
@@ -22,6 +26,13 @@
             background: #0a1628;
             color: #fff;
             cursor: default;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: pan-y;
         }
         
         /* Winter Snowy Background */
@@ -150,6 +161,20 @@
             z-index: 10;
         }
         
+        @media (max-width: 768px) {
+            .slide-content {
+                max-width: 100%;
+                width: calc(100% - 20px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide-content {
+                max-width: 100%;
+                width: calc(100% - 10px);
+            }
+        }
+        
         /* Frosted Glass Cards */
         .glass-card {
             background: linear-gradient(135deg, 
@@ -257,6 +282,9 @@
             margin-bottom: 25px;
             animation: titleGlow 4s ease-in-out infinite;
             filter: drop-shadow(0 0 30px rgba(135, 206, 250, 0.4));
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
         
         @keyframes titleGlow {
@@ -883,6 +911,9 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
         
         .message-slide.active .message-title {
@@ -910,6 +941,13 @@
             margin: 0 auto;
             font-weight: 300;
             font-family: 'Cormorant Garamond', serif;
+        }
+        
+        @media (max-width: 768px) {
+            .message-slide .message-body {
+                max-width: 100%;
+                padding: 0 10px;
+            }
         }
         
         .message-slide .message-body p {
@@ -1023,6 +1061,9 @@
                 epicGradient 8s ease infinite,
                 finaleGlow 5s ease-in-out infinite;
             position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
         
         #slide8 .finale-title::before {
@@ -1068,6 +1109,13 @@
             margin: 0 auto 40px;
             font-weight: 300;
             font-family: 'Cormorant Garamond', serif;
+        }
+        
+        @media (max-width: 768px) {
+            #slide8 .finale-text {
+                max-width: 100%;
+                padding: 0 10px;
+            }
         }
         
         #slide8 .ornamental-divider {
@@ -1462,34 +1510,527 @@
             50% { transform: translateX(12px); }
         }
         
-        /* Responsive */
+        /* Responsive Design - Mobile First Approach */
+        
+        /* Large Tablets and Small Desktops */
         @media (max-width: 1024px) {
-            .slide { padding: 60px 40px; }
-            .glass-card { padding: 55px 45px; }
-            .countdown-display { gap: 25px; }
+            .slide { 
+                padding: 50px 30px;
+            }
+            .glass-card { 
+                padding: 40px 30px;
+            }
+            .countdown-display { 
+                gap: 20px;
+                max-width: 700px;
+            }
+            #slide1 .timer-header {
+                margin-bottom: 50px;
+            }
+            .message-slide .message-title {
+                margin-bottom: 40px;
+            }
+            #slide8 .finale-text {
+                margin-bottom: 30px;
+            }
         }
         
+        /* Tablets and Large Phones */
         @media (max-width: 768px) {
-            .slide { padding: 50px 30px; }
-            .glass-card { padding: 45px 35px; }
+            html, body {
+                font-size: 14px;
+            }
+            
+            .slide { 
+                padding: 40px 20px;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+            
+            .glass-card { 
+                padding: 30px 20px;
+                border-radius: 25px;
+            }
+            
+            /* Countdown Timer Adjustments */
             .countdown-display {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                max-width: 100%;
+            }
+            
+            .time-unit-inner { 
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            
+            #slide1 .timer-header {
+                margin-bottom: 40px;
+            }
+            
+            #slide1 .timer-pretitle {
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+                margin-bottom: 15px;
+            }
+            
+            #slide1 .timer-title {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+                margin-bottom: 15px;
+            }
+            
+            #slide1 .timer-subtitle {
+                font-size: clamp(0.9rem, 3vw, 1.2rem);
+                letter-spacing: 0.1em;
+            }
+            
+            .time-number {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+            
+            .time-label {
+                font-size: 0.8rem;
+                letter-spacing: 0.2em;
+                margin-top: 12px;
+            }
+            
+            /* Year Transition Adjustments */
+            #slide2 .year-container {
+                margin-bottom: 40px;
+                min-height: 200px;
+            }
+            
+            #slide2 .year-old {
+                font-size: clamp(3rem, 15vw, 8rem);
+                letter-spacing: 0.1em;
+            }
+            
+            #slide2 .year-new {
+                font-size: clamp(4rem, 20vw, 10rem);
+                letter-spacing: 0.08em;
+            }
+            
+            #slide2 .snowflake-ornament {
+                font-size: 2.5rem;
+                margin: 30px 0;
+            }
+            
+            #slide2 .subtitle {
+                font-size: clamp(1.2rem, 4vw, 1.6rem);
+                margin-top: 30px;
+            }
+            
+            /* Message Slides Adjustments */
+            .message-slide .slide-number {
+                font-size: 0.7rem;
+                letter-spacing: 0.3em;
+                margin-bottom: 30px;
+            }
+            
+            .message-slide .icon-wrapper {
+                font-size: clamp(3rem, 12vw, 5rem);
+                margin-bottom: 30px;
+            }
+            
+            .message-slide .message-title {
+                font-size: clamp(2rem, 9vw, 4rem);
+                margin-bottom: 35px;
+                line-height: 1.3;
+            }
+            
+            .message-slide .message-body {
+                font-size: clamp(1rem, 3.5vw, 1.3rem);
+                line-height: 2;
+            }
+            
+            .message-slide .message-body p {
+                margin-bottom: 25px;
+            }
+            
+            /* Finale Slide Adjustments */
+            #slide8 .finale-title {
+                font-size: clamp(3rem, 12vw, 6rem);
+                margin-bottom: 40px;
+                line-height: 1.3;
+            }
+            
+            #slide8 .finale-text {
+                font-size: clamp(1rem, 3.5vw, 1.4rem);
+                line-height: 2.2;
+                margin-bottom: 25px;
+            }
+            
+            #slide8 .ornamental-divider {
+                margin: 40px 0;
                 gap: 20px;
             }
-            .time-unit-inner { padding: 35px 18px; }
-            .birthday-link { bottom: 30px; right: 30px; }
-            .birthday-btn { padding: 16px 28px; font-size: 0.75rem; }
-            .nav-container { bottom: 30px; padding: 15px 25px; gap: 12px; }
-            .nav-arrow { width: 45px; height: 45px; font-size: 1.2rem; }
-            .nav-dot { width: 9px; height: 9px; }
-            .nav-dot.active { width: 40px; }
-            .scroll-hint { bottom: 110px; font-size: 0.65rem; }
+            
+            #slide8 .ornamental-icon {
+                font-size: 2rem;
+            }
+            
+            #slide8 .signature {
+                font-size: clamp(1.5rem, 5vw, 2.2rem);
+                margin-top: 50px;
+            }
+            
+            /* Navigation Adjustments */
+            .birthday-link { 
+                bottom: 20px; 
+                right: 20px; 
+            }
+            
+            .birthday-btn { 
+                padding: 12px 20px; 
+                font-size: 0.65rem;
+                letter-spacing: 0.15em;
+                gap: 10px;
+            }
+            
+            .birthday-icon {
+                font-size: 1.1rem;
+            }
+            
+            .nav-container { 
+                bottom: 20px; 
+                padding: 12px 20px; 
+                gap: 10px;
+                border-radius: 40px;
+            }
+            
+            .nav-arrow { 
+                width: 40px; 
+                height: 40px; 
+                font-size: 1.1rem; 
+            }
+            
+            .nav-dot { 
+                width: 8px; 
+                height: 8px; 
+            }
+            
+            .nav-dot.active { 
+                width: 35px;
+                border-radius: 10px;
+            }
+            
+            .scroll-hint { 
+                bottom: 85px; 
+                font-size: 0.6rem;
+                letter-spacing: 0.2em;
+                gap: 8px;
+            }
+            
+            .scroll-hint::after {
+                font-size: 1rem;
+            }
+            
+            /* Lock Overlay Adjustments */
+            .lock-icon {
+                font-size: 3.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .lock-message {
+                font-size: clamp(1rem, 3vw, 1.4rem);
+            }
+            
+            /* Dev Unlock Button */
+            .dev-unlock {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                top: 15px;
+                left: 15px;
+            }
         }
         
+        /* Small Phones */
         @media (max-width: 480px) {
-            .slide { padding: 40px 20px; }
-            .glass-card { padding: 35px 25px; }
-            .birthday-btn { padding: 14px 22px; font-size: 0.7rem; }
+            html, body {
+                font-size: 13px;
+            }
+            
+            .slide { 
+                padding: 30px 15px;
+            }
+            
+            .glass-card { 
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            
+            /* Extra small text adjustments */
+            #slide1 .timer-pretitle {
+                font-size: 0.65rem;
+                letter-spacing: 0.15em;
+            }
+            
+            #slide1 .timer-title {
+                font-size: clamp(1.8rem, 9vw, 3rem);
+            }
+            
+            .countdown-display {
+                gap: 12px;
+            }
+            
+            .time-unit-inner {
+                padding: 20px 12px;
+            }
+            
+            .time-number {
+                font-size: clamp(2rem, 12vw, 3.5rem);
+            }
+            
+            .time-label {
+                font-size: 0.7rem;
+                margin-top: 10px;
+            }
+            
+            /* Year transition for very small screens */
+            #slide2 .year-old {
+                font-size: clamp(2.5rem, 16vw, 6rem);
+            }
+            
+            #slide2 .year-new {
+                font-size: clamp(3.5rem, 22vw, 8rem);
+            }
+            
+            #slide2 .snowflake-ornament {
+                font-size: 2rem;
+                margin: 20px 0;
+            }
+            
+            #slide2 .subtitle {
+                font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+            }
+            
+            /* Message slides very small screens */
+            .message-slide .slide-number {
+                font-size: 0.6rem;
+                margin-bottom: 25px;
+            }
+            
+            .message-slide .icon-wrapper {
+                font-size: clamp(2.5rem, 13vw, 4rem);
+                margin-bottom: 25px;
+            }
+            
+            .message-slide .message-title {
+                font-size: clamp(1.8rem, 10vw, 3.5rem);
+                margin-bottom: 30px;
+            }
+            
+            .message-slide .message-body {
+                font-size: clamp(0.95rem, 4vw, 1.15rem);
+                line-height: 1.9;
+            }
+            
+            .message-slide .message-body p {
+                margin-bottom: 20px;
+            }
+            
+            /* Finale very small screens */
+            #slide8 .finale-title {
+                font-size: clamp(2.5rem, 13vw, 5rem);
+                margin-bottom: 35px;
+            }
+            
+            #slide8 .finale-text {
+                font-size: clamp(0.95rem, 4vw, 1.2rem);
+                line-height: 2;
+            }
+            
+            #slide8 .ornamental-divider {
+                margin: 35px 0;
+                gap: 15px;
+            }
+            
+            #slide8 .ornamental-icon {
+                font-size: 1.8rem;
+            }
+            
+            #slide8 .signature {
+                font-size: clamp(1.3rem, 6vw, 2rem);
+                margin-top: 40px;
+            }
+            
+            /* Navigation very small screens */
+            .birthday-btn { 
+                padding: 10px 16px; 
+                font-size: 0.6rem;
+                gap: 8px;
+            }
+            
+            .birthday-icon {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                bottom: 15px;
+                padding: 10px 15px;
+                gap: 8px;
+            }
+            
+            .nav-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .nav-dot {
+                width: 7px;
+                height: 7px;
+            }
+            
+            .nav-dot.active {
+                width: 30px;
+            }
+            
+            .scroll-hint {
+                bottom: 75px;
+                font-size: 0.55rem;
+            }
+            
+            .lock-icon {
+                font-size: 3rem;
+            }
+            
+            .lock-message {
+                font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+            }
+        }
+        
+        /* Very Small Phones (iPhone SE, etc) */
+        @media (max-width: 375px) {
+            .slide {
+                padding: 25px 12px;
+            }
+            
+            .glass-card {
+                padding: 20px 12px;
+            }
+            
+            .countdown-display {
+                gap: 10px;
+            }
+            
+            .time-unit-inner {
+                padding: 18px 10px;
+                border-radius: 15px;
+            }
+            
+            .time-number {
+                font-size: clamp(1.8rem, 13vw, 3rem);
+            }
+            
+            .time-label {
+                font-size: 0.65rem;
+                letter-spacing: 0.15em;
+            }
+            
+            .message-slide .message-body {
+                font-size: clamp(0.9rem, 4.5vw, 1.1rem);
+            }
+            
+            #slide8 .finale-text {
+                font-size: clamp(0.9rem, 4.5vw, 1.15rem);
+            }
+            
+            .nav-container {
+                padding: 8px 12px;
+                gap: 6px;
+            }
+            
+            .nav-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .nav-dot {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .nav-dot.active {
+                width: 25px;
+            }
+        }
+        
+        /* Landscape Mode Fixes */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .slide {
+                padding: 30px 20px;
+            }
+            
+            .glass-card {
+                padding: 25px 20px;
+            }
+            
+            #slide1 .timer-header {
+                margin-bottom: 30px;
+            }
+            
+            .countdown-display {
+                gap: 15px;
+            }
+            
+            .time-unit-inner {
+                padding: 20px 15px;
+            }
+            
+            .time-number {
+                font-size: clamp(2rem, 8vh, 3.5rem);
+            }
+            
+            .message-slide .icon-wrapper {
+                font-size: clamp(2.5rem, 10vh, 4rem);
+                margin-bottom: 20px;
+            }
+            
+            .message-slide .message-title {
+                font-size: clamp(2rem, 8vh, 3.5rem);
+                margin-bottom: 25px;
+            }
+            
+            .message-slide .message-body {
+                font-size: clamp(0.95rem, 3vh, 1.2rem);
+                line-height: 1.8;
+            }
+            
+            #slide2 .year-old,
+            #slide2 .year-new {
+                font-size: clamp(3rem, 12vh, 6rem);
+            }
+            
+            #slide8 .finale-title {
+                font-size: clamp(2.5rem, 10vh, 5rem);
+                margin-bottom: 30px;
+            }
+            
+            #slide8 .finale-text {
+                font-size: clamp(0.95rem, 3vh, 1.3rem);
+                line-height: 2;
+                margin-bottom: 20px;
+            }
+            
+            #slide8 .ornamental-divider {
+                margin: 30px 0;
+            }
+            
+            #slide8 .signature {
+                margin-top: 35px;
+            }
+            
+            .nav-container {
+                bottom: 15px;
+            }
+            
+            .scroll-hint {
+                bottom: 70px;
+            }
         }
     </style>
 </head>
@@ -1728,7 +2269,8 @@
         // SNOWFALL SYSTEM
         // ============================================
         const snowfallContainer = document.getElementById('snowfall');
-        const snowflakeCount = 50;
+        const isMobileDevice = window.innerWidth <= 768;
+        const snowflakeCount = isMobileDevice ? 30 : 50;
         
         function createSnowflake() {
             const snowflake = document.createElement('div');
@@ -1999,15 +2541,17 @@
             const particlesContainer = document.getElementById('particles');
             if (!particlesContainer) return;
             
-            const particleCount = 50;
+            // Reduce particle count on mobile for better performance
+            const isMobile = window.innerWidth <= 768;
+            const particleCount = isMobile ? 30 : 50;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 
                 const angle = (Math.PI * 2 * i) / particleCount;
-                const velocity = 100 + Math.random() * 150;
-                const size = 4 + Math.random() * 8;
+                const velocity = isMobile ? 80 + Math.random() * 100 : 100 + Math.random() * 150;
+                const size = isMobile ? 3 + Math.random() * 5 : 4 + Math.random() * 8;
                 
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
