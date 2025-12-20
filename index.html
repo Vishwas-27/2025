@@ -141,11 +141,29 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 80px 60px;
+            padding: 60px 40px;
             opacity: 0;
             transform: scale(0.95);
             transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
                         transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide {
+                padding: 30px 10px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .slide {
+                padding: 25px 8px;
+            }
         }
         
         .slide.active {
@@ -183,13 +201,35 @@
             backdrop-filter: blur(30px);
             border: 2px solid rgba(173, 216, 230, 0.3);
             border-radius: 35px;
-            padding: 70px;
+            padding: 50px 40px;
             position: relative;
             overflow: hidden;
             box-shadow: 
                 0 15px 50px rgba(0, 0, 0, 0.4),
                 inset 0 2px 0 rgba(255, 255, 255, 0.15),
                 0 0 80px rgba(135, 206, 250, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 30px 15px;
+                border-radius: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 25px 12px;
+                border-radius: 20px;
+                border-width: 1px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .glass-card {
+                padding: 20px 10px;
+                border-radius: 18px;
+            }
         }
         
         .glass-card::before {
@@ -1287,8 +1327,8 @@
         /* Birthday Link */
         .birthday-link {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
+            bottom: 25px;
+            right: 25px;
             z-index: 200;
             text-decoration: none;
             opacity: 0;
@@ -1304,15 +1344,15 @@
         }
         
         .birthday-btn {
-            padding: 20px 38px;
+            padding: 10px 20px;
             background: linear-gradient(135deg, 
                 rgba(173, 216, 230, 0.2) 0%, 
                 rgba(135, 206, 250, 0.15) 100%);
-            border: 2px solid rgba(173, 216, 230, 0.5);
-            border-radius: 50px;
+            border: 1px solid rgba(173, 216, 230, 0.5);
+            border-radius: 25px;
             color: rgba(173, 216, 230, 1);
-            font-size: 0.9rem;
-            letter-spacing: 0.25em;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             font-weight: 600;
             cursor: pointer;
@@ -1320,10 +1360,10 @@
             backdrop-filter: blur(20px);
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 8px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
         
         .birthday-btn::before {
@@ -1349,20 +1389,20 @@
                 rgba(173, 216, 230, 0.3) 0%, 
                 rgba(135, 206, 250, 0.25) 100%);
             border-color: rgba(173, 216, 230, 0.8);
-            transform: translateY(-8px) scale(1.08);
+            transform: translateY(-4px) scale(1.05);
             box-shadow: 
-                0 25px 70px rgba(135, 206, 250, 0.4),
-                0 0 100px rgba(173, 216, 230, 0.3);
+                0 10px 30px rgba(135, 206, 250, 0.4),
+                0 0 50px rgba(173, 216, 230, 0.3);
         }
         
         .birthday-icon {
-            font-size: 1.3rem;
+            font-size: 0.9rem;
             animation: cakeBounce 2.5s ease-in-out infinite;
         }
         
         @keyframes cakeBounce {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(8deg); }
+            50% { transform: translateY(-5px) rotate(5deg); }
         }
         
         /* Developer Secret Unlock Button */
@@ -1396,24 +1436,24 @@
         /* Navigation */
         .nav-container {
             position: fixed;
-            bottom: 45px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
             display: flex;
-            gap: 18px;
+            gap: 10px;
             align-items: center;
-            padding: 18px 30px;
+            padding: 8px 16px;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(25px);
-            border-radius: 50px;
-            border: 2px solid rgba(173, 216, 230, 0.3);
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
         
         .nav-dot {
-            width: 11px;
-            height: 11px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: rgba(173, 216, 230, 0.4);
             cursor: pointer;
@@ -1428,8 +1468,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: rgba(173, 216, 230, 0.2);
             transition: transform 0.5s ease;
@@ -1440,25 +1480,25 @@
         }
         
         .nav-dot.active {
-            width: 55px;
-            border-radius: 12px;
+            width: 30px;
+            border-radius: 8px;
             background: rgba(173, 216, 230, 0.9);
             box-shadow: 
-                0 0 35px rgba(135, 206, 250, 0.7),
-                0 0 70px rgba(173, 216, 230, 0.4);
+                0 0 20px rgba(135, 206, 250, 0.7),
+                0 0 40px rgba(173, 216, 230, 0.4);
         }
         
         .nav-arrow {
-            width: 55px;
-            height: 55px;
-            border: 2px solid rgba(173, 216, 230, 0.5);
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(173, 216, 230, 0.5);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 1.4rem;
+            font-size: 1rem;
             color: rgba(173, 216, 230, 1);
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
@@ -1467,8 +1507,8 @@
         .nav-arrow:hover {
             background: rgba(173, 216, 230, 0.2);
             border-color: rgba(173, 216, 230, 0.9);
-            transform: scale(1.2);
-            box-shadow: 0 0 40px rgba(135, 206, 250, 0.5);
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(135, 206, 250, 0.5);
         }
         
         .nav-arrow.disabled {
@@ -1480,18 +1520,18 @@
         /* Scroll Hint */
         .scroll-hint {
             position: fixed;
-            bottom: 140px;
+            bottom: 70px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: rgba(173, 216, 230, 0.6);
             z-index: 50;
             animation: hintFade 4s ease-in-out infinite;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
         
         @keyframes hintFade {
@@ -1501,13 +1541,13 @@
         
         .scroll-hint::after {
             content: '→';
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             animation: arrowDrift 2.5s ease-in-out infinite;
         }
         
         @keyframes arrowDrift {
             0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(12px); }
+            50% { transform: translateX(10px); }
         }
         
         /* Responsive Design - Mobile First Approach */
@@ -1515,23 +1555,23 @@
         /* Large Tablets and Small Desktops */
         @media (max-width: 1024px) {
             .slide { 
-                padding: 50px 30px;
+                padding: 40px 20px;
             }
             .glass-card { 
-                padding: 40px 30px;
+                padding: 35px 20px;
             }
             .countdown-display { 
-                gap: 20px;
-                max-width: 700px;
+                gap: 15px;
+                max-width: 100%;
             }
             #slide1 .timer-header {
-                margin-bottom: 50px;
-            }
-            .message-slide .message-title {
                 margin-bottom: 40px;
             }
+            .message-slide .message-title {
+                margin-bottom: 35px;
+            }
             #slide8 .finale-text {
-                margin-bottom: 30px;
+                margin-bottom: 25px;
             }
         }
         
@@ -1542,207 +1582,206 @@
             }
             
             .slide { 
-                padding: 40px 20px;
-                min-height: 100vh;
-                display: flex;
-                align-items: center;
+                padding: 30px 12px !important;
             }
             
             .glass-card { 
-                padding: 30px 20px;
-                border-radius: 25px;
+                padding: 25px 12px !important;
+                border-radius: 20px;
             }
             
             /* Countdown Timer Adjustments */
             .countdown-display {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                gap: 10px;
                 max-width: 100%;
             }
             
             .time-unit-inner { 
-                padding: 25px 15px;
-                border-radius: 20px;
+                padding: 20px 10px;
+                border-radius: 15px;
             }
             
             #slide1 .timer-header {
-                margin-bottom: 40px;
+                margin-bottom: 30px;
             }
             
             #slide1 .timer-pretitle {
-                font-size: 0.75rem;
-                letter-spacing: 0.2em;
-                margin-bottom: 15px;
+                font-size: 0.65rem !important;
+                letter-spacing: 0.15em;
+                margin-bottom: 12px;
             }
             
             #slide1 .timer-title {
-                font-size: clamp(2rem, 8vw, 3.5rem);
-                margin-bottom: 15px;
+                font-size: clamp(1.5rem, 7vw, 2.5rem) !important;
+                margin-bottom: 12px;
             }
             
             #slide1 .timer-subtitle {
-                font-size: clamp(0.9rem, 3vw, 1.2rem);
+                font-size: clamp(0.8rem, 2.5vw, 1rem) !important;
                 letter-spacing: 0.1em;
             }
             
             .time-number {
-                font-size: clamp(2.5rem, 10vw, 4rem);
+                font-size: clamp(2rem, 9vw, 3rem) !important;
             }
             
             .time-label {
-                font-size: 0.8rem;
-                letter-spacing: 0.2em;
-                margin-top: 12px;
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+                margin-top: 10px;
             }
             
             /* Year Transition Adjustments */
             #slide2 .year-container {
-                margin-bottom: 40px;
-                min-height: 200px;
+                margin-bottom: 30px;
+                min-height: 150px;
             }
             
             #slide2 .year-old {
-                font-size: clamp(3rem, 15vw, 8rem);
-                letter-spacing: 0.1em;
-            }
-            
-            #slide2 .year-new {
-                font-size: clamp(4rem, 20vw, 10rem);
+                font-size: clamp(2.5rem, 12vw, 5rem) !important;
                 letter-spacing: 0.08em;
             }
             
+            #slide2 .year-new {
+                font-size: clamp(3rem, 16vw, 7rem) !important;
+                letter-spacing: 0.06em;
+            }
+            
             #slide2 .snowflake-ornament {
-                font-size: 2.5rem;
-                margin: 30px 0;
+                font-size: 2rem;
+                margin: 20px 0;
             }
             
             #slide2 .subtitle {
-                font-size: clamp(1.2rem, 4vw, 1.6rem);
-                margin-top: 30px;
+                font-size: clamp(1rem, 3.5vw, 1.3rem) !important;
+                margin-top: 20px;
             }
             
             /* Message Slides Adjustments */
             .message-slide .slide-number {
-                font-size: 0.7rem;
-                letter-spacing: 0.3em;
-                margin-bottom: 30px;
+                font-size: 0.6rem;
+                letter-spacing: 0.25em;
+                margin-bottom: 25px;
             }
             
             .message-slide .icon-wrapper {
-                font-size: clamp(3rem, 12vw, 5rem);
-                margin-bottom: 30px;
+                font-size: clamp(2.5rem, 10vw, 4rem) !important;
+                margin-bottom: 25px;
             }
             
             .message-slide .message-title {
-                font-size: clamp(2rem, 9vw, 4rem);
-                margin-bottom: 35px;
+                font-size: clamp(1.5rem, 7vw, 3rem) !important;
+                margin-bottom: 25px;
                 line-height: 1.3;
             }
             
             .message-slide .message-body {
-                font-size: clamp(1rem, 3.5vw, 1.3rem);
-                line-height: 2;
+                font-size: clamp(0.9rem, 3vw, 1.1rem) !important;
+                line-height: 1.8;
+                padding: 0 5px !important;
             }
             
             .message-slide .message-body p {
-                margin-bottom: 25px;
+                margin-bottom: 18px;
             }
             
             /* Finale Slide Adjustments */
             #slide8 .finale-title {
-                font-size: clamp(3rem, 12vw, 6rem);
-                margin-bottom: 40px;
-                line-height: 1.3;
+                font-size: clamp(2rem, 9vw, 4rem) !important;
+                margin-bottom: 30px;
+                line-height: 1.25;
             }
             
             #slide8 .finale-text {
-                font-size: clamp(1rem, 3.5vw, 1.4rem);
-                line-height: 2.2;
-                margin-bottom: 25px;
+                font-size: clamp(0.9rem, 3vw, 1.2rem) !important;
+                line-height: 2;
+                margin-bottom: 20px;
+                padding: 0 5px !important;
             }
             
             #slide8 .ornamental-divider {
-                margin: 40px 0;
-                gap: 20px;
+                margin: 30px 0;
+                gap: 15px;
             }
             
             #slide8 .ornamental-icon {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             #slide8 .signature {
-                font-size: clamp(1.5rem, 5vw, 2.2rem);
-                margin-top: 50px;
+                font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
+                margin-top: 40px;
             }
             
             /* Navigation Adjustments */
             .birthday-link { 
-                bottom: 20px; 
-                right: 20px; 
+                bottom: 15px; 
+                right: 15px; 
             }
             
             .birthday-btn { 
-                padding: 12px 20px; 
-                font-size: 0.65rem;
-                letter-spacing: 0.15em;
-                gap: 10px;
+                padding: 8px 14px; 
+                font-size: 0.55rem;
+                letter-spacing: 0.1em;
+                gap: 6px;
             }
             
             .birthday-icon {
-                font-size: 1.1rem;
+                font-size: 0.8rem;
             }
             
             .nav-container { 
-                bottom: 20px; 
-                padding: 12px 20px; 
-                gap: 10px;
-                border-radius: 40px;
+                bottom: 15px; 
+                padding: 6px 12px; 
+                gap: 8px;
+                border-radius: 25px;
             }
             
             .nav-arrow { 
-                width: 40px; 
-                height: 40px; 
-                font-size: 1.1rem; 
+                width: 28px; 
+                height: 28px; 
+                font-size: 0.9rem; 
             }
             
             .nav-dot { 
-                width: 8px; 
-                height: 8px; 
+                width: 5px; 
+                height: 5px; 
             }
             
             .nav-dot.active { 
-                width: 35px;
-                border-radius: 10px;
+                width: 25px;
+                border-radius: 6px;
             }
             
             .scroll-hint { 
-                bottom: 85px; 
-                font-size: 0.6rem;
-                letter-spacing: 0.2em;
-                gap: 8px;
+                bottom: 60px; 
+                font-size: 0.5rem;
+                letter-spacing: 0.15em;
+                gap: 6px;
             }
             
             .scroll-hint::after {
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
             
             /* Lock Overlay Adjustments */
             .lock-icon {
-                font-size: 3.5rem;
-                margin-bottom: 20px;
+                font-size: 3rem;
+                margin-bottom: 15px;
             }
             
             .lock-message {
-                font-size: clamp(1rem, 3vw, 1.4rem);
+                font-size: clamp(0.9rem, 2.5vw, 1.2rem) !important;
             }
             
             /* Dev Unlock Button */
             .dev-unlock {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-                top: 15px;
-                left: 15px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.1rem;
+                top: 12px;
+                left: 12px;
             }
         }
         
@@ -1753,22 +1792,224 @@
             }
             
             .slide { 
-                padding: 30px 15px;
+                padding: 25px 8px !important;
             }
             
             .glass-card { 
-                padding: 25px 15px;
-                border-radius: 20px;
+                padding: 20px 8px !important;
+                border-radius: 18px;
             }
             
             /* Extra small text adjustments */
             #slide1 .timer-pretitle {
-                font-size: 0.65rem;
-                letter-spacing: 0.15em;
+                font-size: 0.6rem !important;
+                letter-spacing: 0.1em;
             }
             
             #slide1 .timer-title {
-                font-size: clamp(1.8rem, 9vw, 3rem);
+                font-size: clamp(1.3rem, 8vw, 2.2rem) !important;
+            }
+            
+            .countdown-display {
+                gap: 8px;
+            }
+            
+            .time-unit-inner {
+                padding: 18px 8px;
+            }
+            
+            .time-number {
+                font-size: clamp(1.8rem, 10vw, 2.5rem) !important;
+            }
+            
+            .time-label {
+                font-size: 0.65rem;
+                margin-top: 8px;
+            }
+            
+            /* Year transition for very small screens */
+            #slide2 .year-old {
+                font-size: clamp(2rem, 13vw, 4rem) !important;
+            }
+            
+            #slide2 .year-new {
+                font-size: clamp(2.5rem, 18vw, 6rem) !important;
+            }
+            
+            #slide2 .snowflake-ornament {
+                font-size: 1.8rem;
+                margin: 15px 0;
+            }
+            
+            #slide2 .subtitle {
+                font-size: clamp(0.9rem, 4vw, 1.2rem) !important;
+            }
+            
+            /* Message slides very small screens */
+            .message-slide .slide-number {
+                font-size: 0.55rem;
+                margin-bottom: 20px;
+            }
+            
+            .message-slide .icon-wrapper {
+                font-size: clamp(2rem, 11vw, 3.5rem) !important;
+                margin-bottom: 20px;
+            }
+            
+            .message-slide .message-title {
+                font-size: clamp(1.3rem, 8vw, 2.5rem) !important;
+                margin-bottom: 20px;
+            }
+            
+            .message-slide .message-body {
+                font-size: clamp(0.85rem, 3.5vw, 1rem) !important;
+                line-height: 1.75;
+            }
+            
+            .message-slide .message-body p {
+                margin-bottom: 15px;
+            }
+            
+            /* Finale very small screens */
+            #slide8 .finale-title {
+                font-size: clamp(1.8rem, 10vw, 3.5rem) !important;
+                margin-bottom: 25px;
+            }
+            
+            #slide8 .finale-text {
+                font-size: clamp(0.85rem, 3.5vw, 1.1rem) !important;
+                line-height: 1.9;
+            }
+            
+            #slide8 .ornamental-divider {
+                margin: 25px 0;
+                gap: 12px;
+            }
+            
+            #slide8 .ornamental-icon {
+                font-size: 1.5rem;
+            }
+            
+            #slide8 .signature {
+                font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+                margin-top: 30px;
+            }
+            
+            /* Navigation very small screens */
+            .birthday-btn { 
+                padding: 7px 12px; 
+                font-size: 0.5rem;
+                gap: 5px;
+            }
+            
+            .birthday-icon {
+                font-size: 0.75rem;
+            }
+            
+            .nav-container {
+                bottom: 12px;
+                padding: 5px 10px;
+                gap: 6px;
+            }
+            
+            .nav-arrow {
+                width: 26px;
+                height: 26px;
+                font-size: 0.85rem;
+            }
+            
+            .nav-dot {
+                width: 4px;
+                height: 4px;
+            }
+            
+            .nav-dot.active {
+                width: 20px;
+            }
+            
+            .scroll-hint {
+                bottom: 55px;
+                font-size: 0.48rem;
+            }
+            
+            .lock-icon {
+                font-size: 2.5rem;
+            }
+            
+            .lock-message {
+                font-size: clamp(0.85rem, 3vw, 1.1rem) !important;
+            }
+        }
+        
+        /* Very Small Phones (iPhone SE, etc) */
+        @media (max-width: 375px) {
+            .slide {
+                padding: 20px 6px !important;
+            }
+            
+            .glass-card {
+                padding: 18px 6px !important;
+            }
+            
+            .countdown-display {
+                gap: 6px;
+            }
+            
+            .time-unit-inner {
+                padding: 15px 6px;
+                border-radius: 12px;
+            }
+            
+            .time-number {
+                font-size: clamp(1.6rem, 11vw, 2.2rem) !important;
+            }
+            
+            .time-label {
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+            }
+            
+            .message-slide .message-body {
+                font-size: clamp(0.8rem, 4vw, 0.95rem) !important;
+            }
+            
+            #slide8 .finale-text {
+                font-size: clamp(0.8rem, 4vw, 1rem) !important;
+            }
+            
+            .nav-container {
+                padding: 4px 8px;
+                gap: 5px;
+            }
+            
+            .nav-arrow {
+                width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+            }
+            
+            .nav-dot {
+                width: 3px;
+                height: 3px;
+            }
+            
+            .nav-dot.active {
+                width: 18px;
+            }
+        }
+        
+        /* Landscape Mode Fixes */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .slide {
+                padding: 20px 15px !important;
+            }
+            
+            .glass-card {
+                padding: 20px 15px !important;
+            }
+            
+            #slide1 .timer-header {
+                margin-bottom: 20px;
             }
             
             .countdown-display {
@@ -1776,260 +2017,58 @@
             }
             
             .time-unit-inner {
-                padding: 20px 12px;
+                padding: 15px 12px;
             }
             
             .time-number {
-                font-size: clamp(2rem, 12vw, 3.5rem);
-            }
-            
-            .time-label {
-                font-size: 0.7rem;
-                margin-top: 10px;
-            }
-            
-            /* Year transition for very small screens */
-            #slide2 .year-old {
-                font-size: clamp(2.5rem, 16vw, 6rem);
-            }
-            
-            #slide2 .year-new {
-                font-size: clamp(3.5rem, 22vw, 8rem);
-            }
-            
-            #slide2 .snowflake-ornament {
-                font-size: 2rem;
-                margin: 20px 0;
-            }
-            
-            #slide2 .subtitle {
-                font-size: clamp(1.1rem, 4.5vw, 1.4rem);
-            }
-            
-            /* Message slides very small screens */
-            .message-slide .slide-number {
-                font-size: 0.6rem;
-                margin-bottom: 25px;
+                font-size: clamp(1.8rem, 7vh, 3rem) !important;
             }
             
             .message-slide .icon-wrapper {
-                font-size: clamp(2.5rem, 13vw, 4rem);
-                margin-bottom: 25px;
+                font-size: clamp(2rem, 9vh, 3.5rem) !important;
+                margin-bottom: 15px;
             }
             
             .message-slide .message-title {
-                font-size: clamp(1.8rem, 10vw, 3.5rem);
-                margin-bottom: 30px;
-            }
-            
-            .message-slide .message-body {
-                font-size: clamp(0.95rem, 4vw, 1.15rem);
-                line-height: 1.9;
-            }
-            
-            .message-slide .message-body p {
+                font-size: clamp(1.5rem, 7vh, 3rem) !important;
                 margin-bottom: 20px;
             }
             
-            /* Finale very small screens */
-            #slide8 .finale-title {
-                font-size: clamp(2.5rem, 13vw, 5rem);
-                margin-bottom: 35px;
-            }
-            
-            #slide8 .finale-text {
-                font-size: clamp(0.95rem, 4vw, 1.2rem);
-                line-height: 2;
-            }
-            
-            #slide8 .ornamental-divider {
-                margin: 35px 0;
-                gap: 15px;
-            }
-            
-            #slide8 .ornamental-icon {
-                font-size: 1.8rem;
-            }
-            
-            #slide8 .signature {
-                font-size: clamp(1.3rem, 6vw, 2rem);
-                margin-top: 40px;
-            }
-            
-            /* Navigation very small screens */
-            .birthday-btn { 
-                padding: 10px 16px; 
-                font-size: 0.6rem;
-                gap: 8px;
-            }
-            
-            .birthday-icon {
-                font-size: 1rem;
-            }
-            
-            .nav-container {
-                bottom: 15px;
-                padding: 10px 15px;
-                gap: 8px;
-            }
-            
-            .nav-arrow {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-            
-            .nav-dot {
-                width: 7px;
-                height: 7px;
-            }
-            
-            .nav-dot.active {
-                width: 30px;
-            }
-            
-            .scroll-hint {
-                bottom: 75px;
-                font-size: 0.55rem;
-            }
-            
-            .lock-icon {
-                font-size: 3rem;
-            }
-            
-            .lock-message {
-                font-size: clamp(0.9rem, 3.5vw, 1.2rem);
-            }
-        }
-        
-        /* Very Small Phones (iPhone SE, etc) */
-        @media (max-width: 375px) {
-            .slide {
-                padding: 25px 12px;
-            }
-            
-            .glass-card {
-                padding: 20px 12px;
-            }
-            
-            .countdown-display {
-                gap: 10px;
-            }
-            
-            .time-unit-inner {
-                padding: 18px 10px;
-                border-radius: 15px;
-            }
-            
-            .time-number {
-                font-size: clamp(1.8rem, 13vw, 3rem);
-            }
-            
-            .time-label {
-                font-size: 0.65rem;
-                letter-spacing: 0.15em;
-            }
-            
             .message-slide .message-body {
-                font-size: clamp(0.9rem, 4.5vw, 1.1rem);
-            }
-            
-            #slide8 .finale-text {
-                font-size: clamp(0.9rem, 4.5vw, 1.15rem);
-            }
-            
-            .nav-container {
-                padding: 8px 12px;
-                gap: 6px;
-            }
-            
-            .nav-arrow {
-                width: 32px;
-                height: 32px;
-                font-size: 0.9rem;
-            }
-            
-            .nav-dot {
-                width: 6px;
-                height: 6px;
-            }
-            
-            .nav-dot.active {
-                width: 25px;
-            }
-        }
-        
-        /* Landscape Mode Fixes */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .slide {
-                padding: 30px 20px;
-            }
-            
-            .glass-card {
-                padding: 25px 20px;
-            }
-            
-            #slide1 .timer-header {
-                margin-bottom: 30px;
-            }
-            
-            .countdown-display {
-                gap: 15px;
-            }
-            
-            .time-unit-inner {
-                padding: 20px 15px;
-            }
-            
-            .time-number {
-                font-size: clamp(2rem, 8vh, 3.5rem);
-            }
-            
-            .message-slide .icon-wrapper {
-                font-size: clamp(2.5rem, 10vh, 4rem);
-                margin-bottom: 20px;
-            }
-            
-            .message-slide .message-title {
-                font-size: clamp(2rem, 8vh, 3.5rem);
-                margin-bottom: 25px;
-            }
-            
-            .message-slide .message-body {
-                font-size: clamp(0.95rem, 3vh, 1.2rem);
-                line-height: 1.8;
+                font-size: clamp(0.85rem, 2.8vh, 1.1rem) !important;
+                line-height: 1.7;
             }
             
             #slide2 .year-old,
             #slide2 .year-new {
-                font-size: clamp(3rem, 12vh, 6rem);
+                font-size: clamp(2.5rem, 11vh, 5rem) !important;
             }
             
             #slide8 .finale-title {
-                font-size: clamp(2.5rem, 10vh, 5rem);
-                margin-bottom: 30px;
+                font-size: clamp(2rem, 9vh, 4.5rem) !important;
+                margin-bottom: 25px;
             }
             
             #slide8 .finale-text {
-                font-size: clamp(0.95rem, 3vh, 1.3rem);
-                line-height: 2;
-                margin-bottom: 20px;
+                font-size: clamp(0.85rem, 2.8vh, 1.2rem) !important;
+                line-height: 1.8;
+                margin-bottom: 15px;
             }
             
             #slide8 .ornamental-divider {
-                margin: 30px 0;
+                margin: 20px 0;
             }
             
             #slide8 .signature {
-                margin-top: 35px;
+                margin-top: 25px;
             }
             
             .nav-container {
-                bottom: 15px;
+                bottom: 12px;
             }
             
             .scroll-hint {
-                bottom: 70px;
+                bottom: 55px;
             }
         }
     </style>
