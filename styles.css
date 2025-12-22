@@ -968,7 +968,7 @@ drop-shadow(0 0 180px rgba(135, 206, 250, 0.6));
 }
 /* Name change animation */
 .name-text.changing {
-animation: nameChange 1.0s cubic-bezier(0.34, 1.56, 0.64, 1);
+animation: nameChange 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 @keyframes nameChange {
 0% {
@@ -1910,3 +1910,4 @@ html, body { font-size: 13px; }
 .scroll-hint { bottom: 55px; }
 
 }
+
