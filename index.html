@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#0a1628">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>A Winter Journey to 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Winter Background -->
+    <div class="winter-bg"></div>
+    <div class="aurora"></div>
+    <div class="frost-overlay"></div>
+    
+    <!-- Snowfall Container -->
+    <div id="snowfall"></div>
+    
+    <!-- Developer Secret Unlock Button -->
+    <div class="dev-unlock" id="devUnlock" title="Developer Mode">🔓</div>
+    
+    <!-- Scroll Hint -->
+    <div class="scroll-hint" id="scrollHint">Waiting for the magic</div>
+    
+    <!-- Birthday Link -->
+    <a href="https://vishwas-27.github.io/survey/" target="_blank" class="birthday-link" id="birthdayLink">
+        <div class="birthday-btn">
+            <span class="birthday-icon">🎂</span>
+            <span>Relive Birthday</span>
+        </div>
+    </a>
+    
+    <!-- Main Container -->
+    <div class="scroll-container" id="scrollContainer">
+        
+        <!-- SLIDE 1: Countdown (First Slide) -->
+        <div class="slide active" id="slide1">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="timer-header">
+                        <p class="timer-pretitle">The Journey Begins In</p>
+                        <h1 class="timer-title">Moments Until Magic</h1>
+                        <p class="timer-subtitle">Where winter dreams meet new beginnings</p>
+                    </div>
+                    <div class="countdown-display">
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="days">00</div>
+                                <div class="time-label">Days</div>
+                            </div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="hours">00</div>
+                                <div class="time-label">Hours</div>
+                            </div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="minutes">00</div>
+                                <div class="time-label">Minutes</div>
+                            </div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="time-unit-inner">
+                                <div class="time-number" id="seconds">00</div>
+                                <div class="time-label">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 2: Year Transition -->
+        <div class="slide locked" id="slide2">
+            <div class="slide-content">
+                <div class="year-container">
+                    <div class="year-old">2025</div>
+                    <div class="year-new">2026</div>
+                    <div class="particles" id="particles"></div>
+                </div>
+                <div class="snowflake-ornament">❄️</div>
+                <p class="subtitle">A Winter's Tale Begins</p>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Awaiting the midnight hour...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 3: Happy New Year with Sequential Names -->
+        <div class="slide locked" id="slide3">
+            <div class="slide-content">
+                <div class="happy-new-year-container">
+                    <div class="firework-container" id="fireworkContainer"></div>
+                    <div class="celebration-text">
+                        <div class="happy-text">Happy New Year</div>
+                        <div class="name-text" id="nameText">Saachiiiii</div>
+                        <div class="celebration-emoji">🎊🎉✨</div>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The celebration awaits...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 4: Message 1 -->
+        <div class="slide message-slide locked" id="slide4">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter One</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">✨</div>
+                    </div>
+                    <h2 class="message-title">A Pristine Canvas</h2>
+                    <div class="message-body">
+                        <p>Like the first snowfall blanketing the earth, every new year arrives as an <span class="highlight">untouched canvas</span>—pure, infinite, and waiting for your unique story.</p>
+                        <p>2026 is yours to paint. Make it a masterpiece of moments that matter.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">This chapter reveals at midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 5: Message 2 -->
+        <div class="slide message-slide locked" id="slide5">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Two</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">🎓</div>
+                    </div>
+                    <h2 class="message-title">Your Defining Years</h2>
+                    <div class="message-body">
+                        <p>College is where souls find themselves through <span class="highlight">unexpected friendships, transformative challenges</span>, and quiet moments of profound discovery.</p>
+                        <p>Every experience writes a page in your story. Embrace them all—this is your becoming.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Patience... magic unfolds soon...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 6: Message 3 -->
+        <div class="slide message-slide locked" id="slide6">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Three</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">🌱</div>
+                    </div>
+                    <h2 class="message-title">Beautiful Evolution</h2>
+                    <div class="message-body">
+                        <p>There will be detours and stumbles. Moments when the path feels hidden by winter's fog. But know this—<span class="highlight">every challenge is growth in disguise</span>.</p>
+                        <p>Like a seed beneath winter snow, you're growing even when you can't see it. Trust your season.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The story continues at midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 7: Message 4 -->
+        <div class="slide message-slide locked" id="slide7">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Four</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">💪</div>
+                    </div>
+                    <h2 class="message-title">Your Hidden Strength</h2>
+                    <div class="message-body">
+                        <p>You carry more capability than you realize. I've witnessed the <span class="highlight">quiet determination, the gentle resilience</span> that lives in you.</p>
+                        <p>This year, trust yourself deeply. You're stronger than your doubts, braver than your fears.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">Almost there... wait for the bells...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 8: Message 5 -->
+        <div class="slide message-slide locked" id="slide8">
+            <div class="slide-content">
+                <div class="glass-card">
+                    <div class="slide-number">Chapter Five</div>
+                    <div class="icon-wrapper">
+                        <div class="message-icon">☀️</div>
+                    </div>
+                    <h2 class="message-title">Treasure the Small Moments</h2>
+                    <div class="message-body">
+                        <p>In the rush of deadlines and dreams, remember to <span class="highlight">pause and breathe</span>. To laugh until your sides hurt. To watch the first snow fall in peaceful silence.</p>
+                        <p>Life isn't just the destinations we reach—it's every heartbeat, every smile, every quiet morning along the way.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The finale awaits midnight...</p>
+            </div>
+        </div>
+        
+        <!-- SLIDE 9: Grand Finale -->
+        <div class="slide locked" id="slide9">
+            <div class="slide-content">
+                <div class="finale-container">
+                    <h2 class="finale-title">Here's to 2026</h2>
+                    <p class="finale-text">
+                        May this year wrap you in warmth when winter feels cold, bring clarity when the path seems unclear, and offer courage when you need it most.
+                    </p>
+                    <p class="finale-text">
+                        May your college journey overflow with growth, your days shimmer with purpose, and your heart hold the quiet confidence that everything unfolds exactly as it should.
+                    </p>
+                    <div class="ornamental-divider">
+                        <span class="ornamental-icon">❄️</span>
+                    </div>
+                    <p class="finale-text">
+                        Wishing you a year of profound beginnings, meaningful connections, and the courage to become who you're truly meant to be.
+                    </p>
+                    <div class="signature">Vishwas</div>
+                </div>
+            </div>
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p class="lock-message">The final message reveals at midnight...</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="nav-arrow" id="prevBtn">←</div>
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+        <div class="nav-dot" data-slide="6"></div>
+        <div class="nav-dot" data-slide="7"></div>
+        <div class="nav-dot" data-slide="8"></div>
+        <div class="nav-arrow" id="nextBtn">→</div>
+    </div>
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
