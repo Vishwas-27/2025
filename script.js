@@ -92,7 +92,7 @@ let countdownComplete = false;
 
 function updateCountdown() {
     const now = new Date().getTime();
-    const newYear = new Date('December 31, 2025 11:59:59').getTime();
+    const newYear = new Date('December 22, 2025 11:48:59').getTime();
     const distance = newYear - now;
     
     if (distance < 0 && !countdownComplete) {
@@ -278,11 +278,11 @@ function handleSwipe() {
 }
 
 // ============================================
-// SEQUENTIAL NAME CHANGES FOR SLIDE 3
+// SEQUENTIAL NAME CHANGES FOR SLIDE 3 - IMPROVED & SMOOTHER
 // ============================================
 let nameChangeInterval;
 let nameIndex = 0;
-const names = ['Saachiiiii', 'Bacche', 'Madam Ji', 'Risk Taker', 'Saachi Agarwal', 'Saachiiiii'];
+const names = ['Saachiiiii', 'Bacche', 'Madam Ji', 'Risk Taker', 'Saachi Agarwal'];
 
 function startNameSequence() {
     const nameTextElement = document.getElementById('nameText');
@@ -297,24 +297,26 @@ function startNameSequence() {
     nameIndex = 0;
     nameTextElement.textContent = names[nameIndex];
     
-    // Start changing names every 4 seconds
+    // Start changing names every 4 seconds with SMOOTH transitions
     nameChangeInterval = setInterval(() => {
         nameIndex = (nameIndex + 1) % names.length;
         
-        // Add changing animation class
-        nameTextElement.classList.add('changing');
+        // Step 1: Fade out current name smoothly
+        nameTextElement.classList.add('fade-out');
         
-        // Change text in the middle of animation
+        // Step 2: Change text after fade-out completes (0.5s)
         setTimeout(() => {
             nameTextElement.textContent = names[nameIndex];
-        }, 400);
+            nameTextElement.classList.remove('fade-out');
+            nameTextElement.classList.add('fade-in');
+        }, 500);
         
-        // Remove animation class
+        // Step 3: Remove fade-in class after animation completes (0.6s)
         setTimeout(() => {
-            nameTextElement.classList.remove('changing');
-        }, 800);
+            nameTextElement.classList.remove('fade-in');
+        }, 1100);
         
-    }, 4000);
+    }, 1000);
 }
 
 // Stop name sequence when leaving slide 3
@@ -598,4 +600,3 @@ window.addEventListener('resize', () => {
 console.log('%c🎆 Happy New Year 2026! 🎆', 'font-size: 24px; font-weight: bold; color: #87CEEB; text-shadow: 0 0 10px #87CEEB;');
 console.log('%cDeveloper Code: VISHWAS2026', 'font-size: 14px; color: #FFD700;');
 console.log('%cTriple-click top-left corner to reveal unlock button', 'font-size: 12px; color: #B0E5FC;');
-
