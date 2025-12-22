@@ -62,7 +62,7 @@ document.addEventListener('click', (e) => {
 // Developer unlock functionality
 devUnlockBtn.addEventListener('click', () => {
     const code = prompt('Enter developer code:');
-    if (code === 'VISHWAS2026' || code === 'vishwas2026') {
+    if (code === '0312') {
         isUnlocked = true;
         unlockAllSlides();
         devUnlockBtn.innerHTML = '🔓';
@@ -600,4 +600,5 @@ window.addEventListener('resize', () => {
 console.log('%c🎆 Happy New Year 2026! 🎆', 'font-size: 24px; font-weight: bold; color: #87CEEB; text-shadow: 0 0 10px #87CEEB;');
 console.log('%cDeveloper Code: VISHWAS2026', 'font-size: 14px; color: #FFD700;');
 console.log('%cTriple-click top-left corner to reveal unlock button', 'font-size: 12px; color: #B0E5FC;');
+
 
