@@ -150,7 +150,7 @@ const birthdayLink = document.getElementById('birthdayLink');
 function updateSlide(index, direction = 'next') {
     // Check if slide is locked
     if (slides[index].classList.contains('locked') && !isUnlocked) {
-        alert('❄️ This chapter is still frozen in time. Wait for the New Year Midnight (and create an reminder Alarm) or unlock with developer code!');
+        alert('❄️ This chapter is still frozen in time. Please Wait for the New Year Midnight - it will unlock on its own... (you may set a early reminder)');
         return;
     }
     
@@ -600,6 +600,7 @@ window.addEventListener('resize', () => {
 console.log('%c🎆 Happy New Year 2026! 🎆', 'font-size: 24px; font-weight: bold; color: #87CEEB; text-shadow: 0 0 10px #87CEEB;');
 console.log('%cDeveloper Code: VISHWAS2026', 'font-size: 14px; color: #FFD700;');
 console.log('%cTriple-click top-left corner to reveal unlock button', 'font-size: 12px; color: #B0E5FC;');
+
 
 
 
