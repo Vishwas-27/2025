@@ -92,7 +92,7 @@ let countdownComplete = false;
 
 function updateCountdown() {
     const now = new Date().getTime();
-    const newYear = new Date('December 31, 2025 23:59:59').getTime();
+    const newYear = new Date('December 31, 2025 18:26:59').getTime();
     const distance = newYear - now;
     
     if (distance < 0 && !countdownComplete) {
